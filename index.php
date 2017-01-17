@@ -37,7 +37,7 @@ echo	'<style>
 				border-width: 1px 1px 0px 1px;
 				border-style: solid;
 				border-color: black;
-				font-size: 75%;
+				font-size: 85%;
 				width:80%;
 				display:block;
 				margin-top: 1%;
@@ -47,6 +47,21 @@ echo	'<style>
 				text-decoration:none;
 				font-family: Arial;
 				font-weight: bold;
+			}
+			.group{
+				overflow: hidden;
+				max-height: 1000px;
+				transition: max-height 0.3s ease-in;
+			}
+			.group.hidden{
+				max-height: 0px;
+				transition: max-height 0.1s ease-out;
+			}
+			.group.click:hover{
+				background-color: #59ADFF;
+			}
+			.channels{
+				font-size: 120%;
 			}
 			#channels{
 				overflow: hidden;
@@ -170,7 +185,7 @@ $stations = [
 	]
 ];
 echo "<script>
-		function showhide(el) {
+		function showhidechannels(el) {
 			var channels = document.getElementById('channels');
 			var status = el.getAttribute('data-status');
 			if(status === 'visible') {
@@ -184,14 +199,34 @@ echo "<script>
 			}
 		}
 	</script>";
+
+echo "<script>
+		function showhidegroup(el) {
+			var status = el.getAttribute('data-status');
+			var name = el.innerHTML;
+			var group = el.nextSibling;
+			if(status === 'visible') {
+				group.className = 'group hidden';
+				el.setAttribute('data-status', 'hidden');
+				document.cookie = name+'=hidden';
+			} else {
+				group.className = 'group';
+				el.setAttribute('data-status', 'visible');
+				document.cookie = name+'=visible';
+			}
+		}
+	</script>";
+
 echo "<body>";
 echo "<div id='container'>\n";
-echo "<pre class='click' onclick='showhide(this)' data-status='visible'><b>Stations:</b> [⇡]</pre>";
+echo "<pre class='channels click' onclick='showhidechannels(this)' data-status='visible'><b>Stations:</b> [⇡]</pre>";
 echo "<form id='channels' method='post'>\n";
-
 foreach($stations as $group => $station) {
-	echo "<div class='group' data-status='visible'>";
-	echo "<span class='group click'>{$group}</span>";
+	if(!isset($_COOKIE[$group])) {
+		setcookie($group, 'hidden');
+	}
+	echo "<span class='group click' onclick='showhidegroup(this)' data-status='{$_COOKIE[$group]}'>{$group}</span>";
+	echo "<div class='group {$_COOKIE[$group]}'>";
 	foreach($station as $name => $data) {
 		$class = '';
 		if(isset($s_station) && $s_station === $name && $s_group === $group) {
@@ -201,8 +236,8 @@ foreach($stations as $group => $station) {
 	}
 	echo "</div>";
 }
-echo "<button class='click station stop' name='station' value='stop%SPLIT%stop'>stop</button>\n";
 echo "</form>\n";
+echo "<form method='post'><button class='click station stop' name='station' value='stop%SPLIT%stop'>stop</button></form>\n";
 
 $buffer = ob_get_contents();
 ob_end_clean();
