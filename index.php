@@ -148,9 +148,11 @@ echo "<script>
 			if(status === 'visible') {
 				channels.className = 'hidden';
 				el.setAttribute('data-status', 'hidden');
+				el.innerHTML = '<b>Stations:</b> [⇣]';
 			} else {
 				channels.className = '';
 				el.setAttribute('data-status', 'visible');
+				el.innerHTML = '<b>Stations:</b> [⇡]';
 			}
 		}
 	</script>";
