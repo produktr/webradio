@@ -28,13 +28,11 @@ echo	'<style>
 			#channels{
 				overflow: hidden;
 				max-height: 1000px;
-				visibility: visible;
 				transition: max-height 0.5s ease-in;
 			}
 			#channels.hidden{
 				max-height: 0px;
-				visibility: hidden;
-				transition: max-height 0.1s ease-out;
+				transition: max-height 0.5s ease-out;
 			}
 			.click{
 				cursor:pointer;
@@ -52,8 +50,11 @@ echo	'<style>
 				background-color:#4CAF50;
 				display: block;
 			}
-			.active{
+			.station.active{
 				background-color:#EE7600;
+			}
+			.station.stop{
+				background-color:#DD2724;
 			}
 			pre{
 				width:80%;
@@ -138,7 +139,7 @@ $stations = [
 	'NSBRadio.co.uk' =>
 		[ 'http://live.nsbradio.co.uk:7904/;', ''],
 	'stop' =>
-		[ 'null', '']
+		[ 'null', '0.0']
 ];
 echo "<script>
 		function showhide(el) {
@@ -161,7 +162,10 @@ echo "<form id='channels' method='post'>\n";
 foreach($stations as $name => $data) {
 	$class = '';
 	if(isset($_POST['station']) && $_POST['station'] === $name) {
-		$class = ' active';
+		$class .= ' active';
+	}
+	if($name === 'stop') {
+		$class .= ' stop';
 	}
 	echo "<button class='click station {$class}' name='station' value='{$name}'>{$name}</button>\n";//<br/>";
 }
