@@ -50,7 +50,7 @@ echo	'<style>
 			}
 			.group{
 				overflow: hidden;
-				max-height: 1000px;
+				max-height: 10000px;
 				transition: max-height 0.3s ease-in;
 			}
 			.group.hidden{
@@ -81,12 +81,12 @@ echo	'<style>
 			}
 			#channels{
 				overflow: hidden;
-				max-height: 1000px;
+				max-height: 10000px;
 				transition: max-height 0.5s ease-in;
 			}
 			#channels.hidden{
 				max-height: 0px;
-				transition: max-height 0.5s ease-out;
+				transition: max-height 0.2s ease-out;
 			}
 			.click{
 				cursor:pointer;
@@ -134,9 +134,11 @@ echo	'<style>
 		</style>';
 
 $stations = [
-	// groupname => [station name => [location, init volume(0.0..1.0)]]
-	'80s' => [
-		'80s' =>
+	// groupname => [	{subgroupname => ''}
+	//					{station name => [location, init volume(0.0..1.0)]}]
+	'70/80/90/00s' => [
+		'80s' => '--------------------------------------------------',
+		'80s #1' =>
 			[ 'http://50.7.76.254:9908/;stream/1', '0.8'],
 		'181-80s' =>
 			[ 'http://listen.181fm.com/181-lite80s_128k.mp3', ''],
@@ -144,25 +146,42 @@ $stations = [
 			[ 'http://uplink.duplexfx.com:8000/;', ''],
 		'Liquidsoap Radio!' =>
 			[ 'http://stream.radiocorp.nl/r10_80s_mp3', ''],
+
+		'90s' => '--------------------------------------------------',
+		'90s #1 fm' =>
+			[ 'http://19353.live.streamtheworld.com/977_90_SC', ''],
+		'965crush fm' =>
+			[ 'http://us4.internet-radio.com:8062/;', ''],
+		'Harder-FM Eurodance' =>
+			[ 'http://uk5.internet-radio.com:8325/;', ''],
+
+		'00s' => '----------------------------------------------------',
+		'2000 FM' => [ 'http://bigrradio-edge1.cdnstream.com/5106_128', ''],
 	],
+
 	'Electronic' => [
 		'House' => '--------------------------------------------------',
 		'deephouse' =>
 			['http://198.15.94.34:8006/stream/1/', ''],
 		'Dogglounge Deep House Radio' =>
 			[ 'http://master.dogglounge.com:9128/;', '0.5'],
+
 		'Techno' => '-------------------------------------------------',
 		'Technomania' =>
 			[ 'http://stream.nauticradio.net:14240/;', ''],
+
 		'Dubstep' => '------------------------------------------------',
-		'Dubstep' =>
+		'Dubstep #1' =>
 			[ 'http://stream.dubbase.fm:7002/;', '0.6'],
+
+		'Drum n Base' => '--------------------------------------------',
 		'Beats n Breaks' =>
 			[ 'http://stream.nauticradio.net:14280/;', ''],
 		'DnB Liquified' =>
 			[ 'http://st8.webradioworld.net:8000/;', ''],
 		'DnB Jungle' =>
 			[ 'http://trace.dnbradio.com/dnbradio_main.mp3', '0.9'],
+
 		'Tekno' => '--------------------------------------------------',
 		'Tekno #1' =>
 			[ 'http://channel1.teknoradio.nl:8064/;', ''],
@@ -170,7 +189,8 @@ $stations = [
 			[ 'http://channel2.teknoradio.nl:8126/;', ''],
 		'Tekno #3' =>
 			[ 'http://channel3.teknoradio.nl:8124/;', ''],
-		'French- Hardcore' => '---------------------------------------',
+
+		'French / Hardcore' => '---------------------------------------',
 		'HardcorePower' =>
 			[ 'http://src.shoutcaststream.com:8022/;', ''],
 		'FrenchCore' =>
@@ -182,9 +202,9 @@ $stations = [
 		'gabberfmGabber FM' =>
 			[ 'http://listen.radionomy.com/;', ''],
 	],
+
 	'Regular' => [
-		'FM4 - ORF' =>
-			[ 'http://mp3stream1.apasf.apa.at:8000/;', ''],
+		'Dutch' => '--------------------------------------------------',
 		'3FM Alternative' =>
 			[ 'http://icecast.omroep.nl/3fm-alternative-mp3', ''],
 		'Radio Veronica' =>
@@ -203,12 +223,16 @@ $stations = [
 			[ 'http://stream.nauticradio.net:14260/;', '0.9'],
 		'Zwarte Hemel' =>
 			[ 'http://stream.nauticradio.net:14220/;', ''],
+
+		'International' => '------------------------------------------',
 		'Box UK Radio' =>
 			[ 'http://uk2.internet-radio.com:31076/;', ''],
 		'RSO 91.7 THESSALONIKI' =>
 			[ 'http://live.isolservers.com:8200/', ''],
 		'NSBRadio.co.uk' =>
-			[ 'http://live.nsbradio.co.uk:7904/;', '']
+			[ 'http://live.nsbradio.co.uk:7904/;', ''],
+		'FM4 - ORF' =>
+			[ 'http://mp3stream1.apasf.apa.at:8000/;', ''],
 	]
 ];
 echo "<script>
