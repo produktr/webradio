@@ -65,7 +65,7 @@ echo	'<style>
 				transition: max-height 0.2s ease;
 			}
 			span.group.click:hover{
-				background-color: #FF6F00;
+				background-color: #C781E3;
 			}
 			span.group.click:after{
 				position:absolute;
@@ -74,7 +74,7 @@ echo	'<style>
 				left:0;
 				width: 93%;
 				border-width: 0px 14px 0px 14px;
-				border-color: #59ADFF;
+				border-color: #3498DB;
 				border-style: solid;
 				content: "";
 				display: block;
@@ -117,16 +117,6 @@ echo	'<style>
 				max-height: 0px;
 				transition: max-height 0.8s ease;
 			}
-			//#channels:after{
-				//content: "";
-				//height: 1px;
-				//width: 75%;
-				//margin-top: 6px;
-				//margin-left: auto;
-				//margin-right: auto;
-				//display: block;
-				//border-bottom: 1px dashed black;
-			//}
 			.click{
 				cursor:pointer;
 			}
@@ -164,7 +154,7 @@ echo	'<style>
 			}
 			.station.stop{
 				margin-top: 2%;
-				background-color:#DD2724;
+				background-color: #DD2724;
 				poistion: relative;
 			}
 			button.station.stop:after{
