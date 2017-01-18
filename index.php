@@ -85,7 +85,7 @@ echo	'<style>
 				transition: max-height 0.5s ease-in;
 			}
 			#channels:after{
-				content: '';
+				content: "";
 				position: absolute;
 				left    : 0;
 				bottom  : 0;
