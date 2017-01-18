@@ -84,6 +84,16 @@ echo	'<style>
 				max-height: 55vh;
 				transition: max-height 0.5s ease-in;
 			}
+			#channels:after{
+				content: "";
+				height: 1px;
+				width: 75%;
+				margin-top: 6px;
+				margin-left: auto;
+				margin-right: auto;
+				display: block;
+				border-bottom: 1px dashed black;
+			}
 			#channels.hidden{
 				overflow: hidden;
 				max-height: 0px;
@@ -237,7 +247,13 @@ $stations = [
 			[ 'http://live.nsbradio.co.uk:7904/;', ''],
 		'FM4 - ORF' =>
 			[ 'http://mp3stream1.apasf.apa.at:8000/;', ''],
-	]
+	],
+	'Vaporwave' => [
+		'Vaporwave #1' => 
+			[ 'https://plaza.one/mp3', ''],
+		'Poolside' =>
+			[ 'http://stream.radio.co/s98f81d47e/listen', '0.7'],
+	],
 ];
 echo "<script>
 		function showhidechannels(el) {
