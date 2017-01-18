@@ -83,6 +83,7 @@ echo	'<style>
 				overflow: hidden;
 				max-height: 10000px;
 				transition: max-height 0.5s ease-in;
+				border-bottom: 1px dashed black;
 			}
 			#channels.hidden{
 				max-height: 0px;
@@ -111,7 +112,6 @@ echo	'<style>
 				background-color:#EE7600;
 			}
 			.station.stop{
-				border-top: 1px dashed black;
 				margin-top: 2%;
 				background-color:#DD2724;
 			}
