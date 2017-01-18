@@ -86,11 +86,8 @@ echo	'<style>
 			}
 			#channels:after{
 				content: "";
-				position: absolute;
-				left    : 0;
-				bottom  : 0;
-				height  : 1px;
-				width   : 50%;
+				height: 1px;
+				width: 50%;
 				border-bottom: 1px dashed black;
 			}
 			#channels.hidden{
