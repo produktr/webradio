@@ -111,6 +111,7 @@ echo	'<style>
 				background-color:#EE7600;
 			}
 			.station.stop{
+				border-top: 1px solid black;
 				margin-top: 2%;
 				background-color:#DD2724;
 			}
