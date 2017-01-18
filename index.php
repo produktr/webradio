@@ -83,6 +83,14 @@ echo	'<style>
 				overflow: hidden;
 				max-height: 10000px;
 				transition: max-height 0.5s ease-in;
+			}
+			#channels:after{
+				content: '';
+				position: absolute;
+				left    : 0;
+				bottom  : 0;
+				height  : 1px;
+				width   : 50%;
 				border-bottom: 1px dashed black;
 			}
 			#channels.hidden{
