@@ -223,7 +223,8 @@ echo "<pre class='channels click' onclick='showhidechannels(this)' data-status='
 echo "<form id='channels' method='post'>\n";
 foreach($stations as $group => $station) {
 	if(!isset($_COOKIE[$group])) {
-		setcookie($group, 'hidden');
+		setcookie($group, 'hidden');  //should be set before any is outputted to page
+		$_COOKIE[$group] = 'hidden';
 	}
 	echo "<span class='group click' onclick='showhidegroup(this)' data-status='{$_COOKIE[$group]}'>{$group}</span>";
 	echo "<div class='group {$_COOKIE[$group]}'>";
