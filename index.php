@@ -60,6 +60,22 @@ echo	'<style>
 			.group.click:hover{
 				background-color: #59ADFF;
 			}
+			span.subgroup {
+				border-width: 0px 0px 0px 0px;
+				border-style: dashed;
+				border-color: black;
+				font-size: 60%;
+				width:70%;
+				height: 1%;
+				display:block;
+				margin-top: 1%;
+				margin-left: auto;
+				margin-right: auto;
+				text-align: left;
+				text-decoration:none;
+				font-family: Arial;
+				font-style: oblique;
+			}
 			.channels{
 				font-size: 120%;
 			}
@@ -130,24 +146,31 @@ $stations = [
 			[ 'http://stream.radiocorp.nl/r10_80s_mp3', ''],
 	],
 	'Electronic' => [
+		'House' => '--------------------------------------------------',
 		'deephouse' =>
 			['http://198.15.94.34:8006/stream/1/', ''],
 		'Dogglounge Deep House Radio' =>
 			[ 'http://master.dogglounge.com:9128/;', '0.5'],
+		'Techno' => '-------------------------------------------------',
 		'Technomania' =>
 			[ 'http://stream.nauticradio.net:14240/;', ''],
+		'Dubstep' => '------------------------------------------------',
+		'Dubstep' =>
+			[ 'http://stream.dubbase.fm:7002/;', '0.6'],
 		'Beats n Breaks' =>
 			[ 'http://stream.nauticradio.net:14280/;', ''],
 		'DnB Liquified' =>
 			[ 'http://st8.webradioworld.net:8000/;', ''],
 		'DnB Jungle' =>
 			[ 'http://trace.dnbradio.com/dnbradio_main.mp3', '0.9'],
+		'Tekno' => '--------------------------------------------------',
 		'Tekno #1' =>
 			[ 'http://channel1.teknoradio.nl:8064/;', ''],
 		'Tekno #2' =>
 			[ 'http://channel2.teknoradio.nl:8126/;', ''],
 		'Tekno #3' =>
 			[ 'http://channel3.teknoradio.nl:8124/;', ''],
+		'French- Hardcore' => '---------------------------------------',
 		'HardcorePower' =>
 			[ 'http://src.shoutcaststream.com:8022/;', ''],
 		'FrenchCore' =>
@@ -234,6 +257,10 @@ foreach($stations as $group => $station) {
 	echo "<div class='group {$_COOKIE[$group]}'>";
 	foreach($station as $name => $data) {
 		$class = '';
+		if(!is_array($data)){
+			echo "<span class='subgroup'>- {$name} -</span>";
+			continue;
+		}
 		if(isset($s_station) && $s_station === $name && $s_group === $group) {
 			$class .= ' active';
 		}
