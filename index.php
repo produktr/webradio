@@ -1,4 +1,5 @@
 <?php
+// 2017 - ProduktR [PointWood]
 ob_start();
 header('Content-Type: text/html; charset=utf-8');
 if(isset($_POST['station'])) {
@@ -18,10 +19,14 @@ echo	'<style>
 				user-select: none;
 			}
 			body{
-				background-color: #F4F4F4;
+				background-color: black;
+				background-image: url(logo_no_fill.png);
+				background-position: center center;
 			}
 			#container{
 				width:500px;
+				max-height: 90vh;
+				margin-top: 5vh;
 				margin:auto;
 				background-color: #EAEAF7;
 				padding: 24px;
@@ -48,27 +53,40 @@ echo	'<style>
 				font-family: Arial;
 				font-weight: bold;
 				position: relative;
+				background-color: none;
 			}
 			.group{
 				overflow: hidden;
 				max-height: 10000px;
-				transition: max-height 0.3s ease-in;
+				transition: max-height 0.5s ease;
 			}
 			.group.hidden{
 				max-height: 0px;
-				transition: max-height 0.1s ease-out;
+				transition: max-height 0.2s ease;
 			}
 			span.group.click:hover{
-				background-color: #59ADFF;
+				background-color: #FF6F00;
 			}
 			span.group.click:after{
 				position:absolute;
-			    top:0;
-			    bottom:0;
-			    left:0;
-			    width: 99%;
-			    border-width: 2px 2px 0px 2px;
-			    border-color: #EAEAF7;
+				top:0;
+				bottom:0;
+				left:0;
+				width: 93%;
+				border-width: 0px 14px 0px 14px;
+				border-color: #59ADFF;
+				border-style: solid;
+				content: "";
+				display: block;
+			}
+			span.group.click:hover:after{
+				position:absolute;
+				top:0;
+				bottom:0;
+				left:0;
+				width: 99%;
+				border-width: 2px 2px 0px 2px;
+				border-color: #EAEAF7;
 				border-style: solid;
 				content: "";
 				display: block;
@@ -92,30 +110,27 @@ echo	'<style>
 				overflow-y: scroll;
 				overflow-x: hidden;
 				max-height: 55vh;
-				transition: max-height 0.5s ease-in;
-			}
-			#channels:after{
-				content: "";
-				height: 1px;
-				width: 75%;
-				margin-top: 6px;
-				margin-left: auto;
-				margin-right: auto;
-				display: block;
-				border-bottom: 1px dashed black;
+				transition: max-height 0.8s ease;
 			}
 			#channels.hidden{
 				overflow: hidden;
 				max-height: 0px;
-				transition: max-height 0.2s ease-out;
+				transition: max-height 0.8s ease;
 			}
+			//#channels:after{
+				//content: "";
+				//height: 1px;
+				//width: 75%;
+				//margin-top: 6px;
+				//margin-left: auto;
+				//margin-right: auto;
+				//display: block;
+				//border-bottom: 1px dashed black;
+			//}
 			.click{
 				cursor:pointer;
 			}
-			button.station:hover{
-				font-weight: bold;
-			}
-			.station{
+			button.station{
 				width:75%;
 				border:none;
 				color:white;
@@ -127,6 +142,22 @@ echo	'<style>
 				text-decoration:none;
 				background-color:#4CAF50;
 				display: block;
+				position:relative;
+			}
+			button.station:not(.stop):hover:after{
+				position:absolute;
+				top:0;
+				bottom:0;
+				left:0;
+				width: 100%;
+				border-width: 1px 1px 1px 1px;
+				border-color: #EAEAF7;
+				border-style: solid;
+				content: "";
+				display: block;
+			}
+			button.station:hover{
+				font-weight: bold;
 			}
 			.station.active{
 				background-color:#EE7600;
@@ -134,6 +165,18 @@ echo	'<style>
 			.station.stop{
 				margin-top: 2%;
 				background-color:#DD2724;
+				poistion: relative;
+			}
+			button.station.stop:after{
+				position: absolute;
+				top:-8;
+				left:10%;
+				right:10%;
+				content: "";
+				height: 1px;
+				width: 80%;
+				display: block;
+				border-top: 1px dashed black;
 			}
 			pre{
 				width:80%;
