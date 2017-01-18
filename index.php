@@ -47,6 +47,7 @@ echo	'<style>
 				text-decoration:none;
 				font-family: Arial;
 				font-weight: bold;
+				position: relative;
 			}
 			.group{
 				overflow: hidden;
@@ -57,13 +58,22 @@ echo	'<style>
 				max-height: 0px;
 				transition: max-height 0.1s ease-out;
 			}
-			.group.click:hover{
+			span.group.click:hover{
 				background-color: #59ADFF;
 			}
+			span.group.click:after{
+				position:absolute;
+			    top:0;
+			    bottom:0;
+			    left:0;
+			    width: 99%;
+			    border-width: 2px 2px 0px 2px;
+			    border-color: #EAEAF7;
+				border-style: solid;
+				content: "";
+				display: block;
+			}
 			span.subgroup {
-				border-width: 0px 0px 0px 0px;
-				border-style: dashed;
-				border-color: black;
 				font-size: 60%;
 				width:70%;
 				display:block;
