@@ -152,12 +152,14 @@ echo	'<style>
 			.station.active{
 				background-color:#EE7600;
 			}
-			.station.stop{
+			button.stop{
+				margin-left: 24%;
+				width:50%;
 				margin-top: 2%;
 				background-color: #DD2724;
 				poistion: relative;
 			}
-			button.station.stop:after{
+			button.stop:after{
 				position: absolute;
 				top:-8;
 				left:10%;
