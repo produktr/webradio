@@ -240,6 +240,8 @@ $stations = [
 	'Vaporwave' => [
 		'Vaporwave #1' => 
 			[ 'https://plaza.one/mp3', ''],
+		'Poolside' =>
+			[ 'http://stream.radio.co/s98f81d47e/listen', '0.7'],
 	],
 ];
 echo "<script>
