@@ -91,6 +91,9 @@ echo	'<style>
 			.click{
 				cursor:pointer;
 			}
+			button.station:hover{
+				font-weight: bold;
+			}
 			.station{
 				width:75%;
 				border:none;
