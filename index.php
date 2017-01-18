@@ -87,7 +87,8 @@ echo	'<style>
 			#channels:after{
 				content: "";
 				height: 1px;
-				width: 80%;
+				width: 75%;
+				margin-top: 6px;
 				margin-left: auto;
 				margin-right: auto;
 				display: block;
