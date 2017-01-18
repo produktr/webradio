@@ -66,7 +66,6 @@ echo	'<style>
 				border-color: black;
 				font-size: 60%;
 				width:70%;
-				height: 1%;
 				display:block;
 				margin-top: 1%;
 				margin-left: auto;
@@ -80,11 +79,13 @@ echo	'<style>
 				font-size: 120%;
 			}
 			#channels{
-				overflow: hidden;
-				max-height: 10000px;
+				overflow-y: scroll;
+				overflow-x: hidden;
+				max-height: 55vh;
 				transition: max-height 0.5s ease-in;
 			}
 			#channels.hidden{
+				overflow: hidden;
 				max-height: 0px;
 				transition: max-height 0.2s ease-out;
 			}
