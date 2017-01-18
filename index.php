@@ -140,6 +140,8 @@ $stations = [
 			[ 'http://stream.nauticradio.net:14280/;', ''],
 		'DnB Liquified' =>
 			[ 'http://st8.webradioworld.net:8000/;', ''],
+		'DnB Jungle' =>
+			[ 'http://trace.dnbradio.com/dnbradio_main.mp3', '0.9'],
 		'Tekno #1' =>
 			[ 'http://channel1.teknoradio.nl:8064/;', ''],
 		'Tekno #2' =>
