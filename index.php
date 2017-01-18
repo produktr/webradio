@@ -236,7 +236,11 @@ $stations = [
 			[ 'http://live.nsbradio.co.uk:7904/;', ''],
 		'FM4 - ORF' =>
 			[ 'http://mp3stream1.apasf.apa.at:8000/;', ''],
-	]
+	],
+	'Vaporwave' => [
+		'Vaporwave #1' => 
+			[ 'https://plaza.one/mp3', ''],
+	],
 ];
 echo "<script>
 		function showhidechannels(el) {
