@@ -30,10 +30,18 @@ echo	'<style>
 				margin:auto;
 				background-color: #EAEAF7;
 				padding: 24px;
+				padding-top: 0px;
 				border-top: 10px solid lightgray;
 				border-right:10px solid gray;
 				border-bottom:10px solid gray;
 				border-left:10px solid lightgray;
+			}
+			pre.date{
+				padding: 0px;
+				height: 3px;
+				color: gray;
+				margin-bottom: 20px;
+				font-size: 80%;
 			}
 			div.group{
 				padding: 0px;
@@ -335,6 +343,8 @@ echo "<script>
 
 echo "<body>";
 echo "<div id='container'>\n";
+$date = date('l d M Y'); 
+echo "<pre class='date'>Page loaded on: {$date}</pre>";
 echo "<pre class='channels click' onclick='showhidechannels(this)' data-status='visible'><b>Stations:</b> [⇡]</pre>";
 echo "<form id='channels' method='post'>\n";
 foreach($stations as $group => $station) {
