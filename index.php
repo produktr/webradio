@@ -267,7 +267,7 @@ $stations = [
 		'NERadio Hardstyle' =>
 			[ 'http://1.hardstyle.nu:443/;', ''],
 		'gabberfmGabber FM' =>
-			[ 'http://listen.radionomy.com/;', ''],
+			[ 'http://streaming.radionomy.com/Gabberfm?lang=en-GB%2cen-US%3bq%3d0.8%2cen%3bq%3d0.6', '0.6'],
 	],
 
 	'Regular' => [
@@ -301,11 +301,13 @@ $stations = [
 		'FM4 - ORF' =>
 			[ 'http://mp3stream1.apasf.apa.at:8000/;', ''],
 	],
-	'Vaporwave' => [
+	'Other' => [
 		'Vaporwave #1' => 
 			[ 'https://plaza.one/mp3', ''],
 		'Poolside' =>
 			[ 'http://stream.radio.co/s98f81d47e/listen', '0.7'],
+		'Lounge' =>
+			[ 'http://listen.radionomy.com/;', ''],
 	],
 ];
 echo "<script>
