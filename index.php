@@ -1,5 +1,4 @@
 <?php
-// 2017 - ProduktR [PointWood]
 ob_start();
 header('Content-Type: text/html; charset=utf-8');
 if(isset($_POST['station'])) {
@@ -7,198 +6,236 @@ if(isset($_POST['station'])) {
 	$s_group = $x[0];
 	$s_station = $x[1];
 }
-echo	'<title>%TITLE%</title>';
-echo 	"<link rel='shortcut icon' href='favicon.ico' />";
-echo	'<style>
-			*{
-				-webkit-user-select: none; /* Chrome/Safari */        
-				-moz-user-select: none; /* Firefox */
-				-ms-user-select: none; /* IE10+ */
-				/* Rules below not implemented in browsers yet */
-				-o-user-select: none;
-				user-select: none;
-			}
-			body{
-				background-color: black;
-				background-image: url(logo_no_fill.png);
-				background-position: center center;
-			}
-			#container{
-				width:500px;
-				max-height: 90vh;
-				margin-top: 5vh;
-				margin:auto;
-				background-color: #EAEAF7;
-				padding: 24px;
-				padding-top: 0px;
-				border-top: 10px solid lightgray;
-				border-right:10px solid gray;
-				border-bottom:10px solid gray;
-				border-left:10px solid lightgray;
-			}
-			pre.date{
-				padding: 0px;
-				height: 3px;
-				color: gray;
-				margin-bottom: 20px;
-				font-size: 80%;
-			}
-			div.group{
-				padding: 0px;
-			}
-			span.group{
-				border-width: 1px 1px 0px 1px;
-				border-style: solid;
-				border-color: black;
-				font-size: 85%;
-				width:80%;
-				display:block;
-				margin-top: 1%;
-				margin-left: auto;
-				margin-right: auto;
-				text-align: center;
-				text-decoration:none;
-				font-family: Arial;
-				font-weight: bold;
-				position: relative;
-				background-color: none;
-			}
-			.group{
-				overflow: hidden;
-				max-height: 10000px;
-				transition: max-height 0.5s ease;
-			}
-			.group.hidden{
-				max-height: 0px;
-				transition: max-height 0.2s ease;
-			}
-			span.group.click:hover{
-				background-color: #C781E3;
-			}
-			span.group.click:after{
-				position:absolute;
-				top:0;
-				bottom:0;
-				left:0;
-				width: 93%;
-				border-width: 0px 14px 0px 14px;
-				border-color: #3498DB;
-				border-style: solid;
-				content: "";
-				display: block;
-			}
-			span.group.click:hover:after{
-				position:absolute;
-				top:0;
-				bottom:0;
-				left:0;
-				width: 99%;
-				border-width: 2px 2px 0px 2px;
-				border-color: #EAEAF7;
-				border-style: solid;
-				content: "";
-				display: block;
-			}
-			span.subgroup {
-				font-size: 60%;
-				width:70%;
-				display:block;
-				margin-top: 1%;
-				margin-left: auto;
-				margin-right: auto;
-				text-align: left;
-				text-decoration:none;
-				font-family: Arial;
-				font-style: oblique;
-			}
-			.channels{
-				font-size: 120%;
-			}
-			#channels{
-				overflow-y: scroll;
-				overflow-x: hidden;
-				max-height: 55vh;
-				transition: max-height 0.8s ease;
-			}
-			#channels.hidden{
-				overflow: hidden;
-				max-height: 0px;
-				transition: max-height 0.8s ease;
-			}
-			.click{
-				cursor:pointer;
-			}
-			button.station{
-				width:75%;
-				border:none;
-				color:white;
-				margin-top:2px;
-				margin-left: auto;
-				margin-right: auto;
-				padding:15px32px;
-				text-align:center;
-				text-decoration:none;
-				background-color:#4CAF50;
-				display: block;
-				position:relative;
-			}
-			button.station:not(.stop):hover:after{
-				position:absolute;
-				top:0;
-				bottom:0;
-				left:0;
-				width: 100%;
-				border-width: 1px 1px 1px 1px;
-				border-color: #EAEAF7;
-				border-style: solid;
-				content: "";
-				display: block;
-			}
-			button.station:hover{
-				font-weight: bold;
-			}
-			.station.active{
-				background-color:#EE7600;
-			}
-			button.stop{
-				margin-left: 24%;
-				width:50%;
-				margin-top: 2%;
-				background-color: #DD2724;
-				poistion: relative;
-			}
-			button.stop:after{
-				position: absolute;
-				top:-8;
-				left:10%;
-				right:10%;
-				content: "";
-				height: 1px;
-				width: 80%;
-				display: block;
-				border-top: 1px dashed black;
-			}
-			pre{
-				width:80%;
-				display:block;
-				margin-left: auto;
-				margin-right: auto;
-				text-align: center;
-			}
-			audio{
-				width:80%;
-				display:block;
-				margin-left: auto;
-				margin-right: auto;
-			}
-			img{
-				display: block;
-				margin-top: 12px;
-				margin-left: auto;
-				margin-right: auto;
-				width: 25%;
-			}
-		</style>';
+echo	<<<HERE
+	<!DOCTYPE html>
+	<html lang="en-US">
+		<head>
+			<title>%TITLE%</title>
+		 	<link rel="shortcut icon" href="favicon.ico" />
+			<style>
+				*{
+					-webkit-user-select: none; /* Chrome/Safari */        
+					-moz-user-select: none; /* Firefox */
+					-ms-user-select: none; /* IE10+ */
+					/* Rules below not implemented in browsers yet */
+					-o-user-select: none;
+					user-select: none;
+				}
+				body{
+					background-color: black;
+					background-image: url(logo_no_fill.png);
+					background-position: center center;
+				}
+				#container{
+					width: 500px;
+					max-height: 90vh;
+					margin-top: 5vh;
+					margin: auto;
+					background-color: #EAEAF7;
+					padding: 24px;
+					padding-top: 0px;
+					border-top: 10px solid lightgray;
+					border-right: 10px solid gray;
+					border-bottom: 10px solid gray;
+					border-left: 10px solid lightgray;
+				}
+				pre.date{
+					padding: 0px;
+					height: 3px;
+					color: gray;
+					margin-bottom: 20px;
+					font-size: 80%;
+				}
+				div.group{
+					padding: 0px;
+				}
+				span.group{
+					border-width: 1px 1px 0px 1px;
+					border-style: solid;
+					border-color: black;
+					font-size: 85%;
+					width: 80%;
+					display: block;
+					margin-top: 1%;
+					margin-left: auto;
+					margin-right: auto;
+					text-align: center;
+					text-decoration: none;
+					font-family: Arial;
+					font-weight: bold;
+					position: relative;
+					background-color: none;
+				}
+				.group{
+					overflow: hidden;
+					max-height: 10000px;
+					transition: max-height 0.5s ease;
+				}
+				.group.hidden{
+					max-height: 0px;
+					transition: max-height 0.2s ease;
+				}
+				span.group.click:hover{
+					background-color: #C781E3;
+				}
+				span.group.click:after{
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					left: 0;
+					width: 93%;
+					border-width: 0px 14px 0px 14px;
+					border-color: #3498DB;
+					border-style: solid;
+					content: "";
+					display: block;
+				}
+				span.group.click:hover:after{
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					left: 0;
+					width: 99%;
+					border-width: 2px 2px 0px 2px;
+					border-color: #EAEAF7;
+					border-style: solid;
+					content: "";
+					display: block;
+				}
+				span.subgroup {
+					font-size: 60%;
+					width: 70%;
+					display: block;
+					margin-top: 1%;
+					margin-left: auto;
+					margin-right: auto;
+					text-align: left;
+					text-decoration: none;
+					font-family: Arial;
+					font-style: oblique;
+				}
+				.channels{
+					font-size: 120%;
+				}
+				#channels{
+					overflow-y: scroll;
+					overflow-x: hidden;
+					max-height: 55vh;
+					transition: max-height 0.8s ease;
+				}
+				#channels.hidden{
+					overflow: hidden;
+					max-height: 0px;
+					transition: max-height 0.8s ease;
+				}
+				.click{
+					cursor: pointer;
+				}
+				button.station{
+					width: 75%;
+					border: none;
+					color: white;
+					margin-top: 2px;
+					margin-left: auto;
+					margin-right: auto;
+					padding: 15px32px;
+					text-align: center;
+					text-decoration: none;
+					background-color: #4CAF50;
+					display: block;
+					position: relative;
+				}
+				button.station:not(.stop):hover:after{
+					position:absolute;
+					top:0;
+					bottom:0;
+					left:0;
+					width: 100%;
+					border-width: 1px 1px 1px 1px;
+					border-color: #EAEAF7;
+					border-style: solid;
+					content: "";
+					display: block;
+				}
+				button.station:hover{
+					font-weight: bold;
+				}
+				.station.active{
+					background-color:#EE7600;
+				}
+				button.stop{
+					position: relative;
+					margin-left: 24%;
+					width: 50%;
+					margin-top: 2%;
+					background-color: #DD2724;
+				}
+				button.stop:after{
+					position: absolute;
+					top: -8px;
+					left: 10%;
+					right: 10%;
+					content: "";
+					height: 1px;
+					width: 80%;
+					display: block;
+					border-top: 1px dashed black;
+				}
+				pre{
+					width: 80%;
+					display: block;
+					margin-left: auto;
+					margin-right: auto;
+					text-align: center;
+				}
+				#audiocontrol{
+					display: flex;
+					justify-content: space-between;
+					width: 36%;
+					margin-left: auto;
+					margin-right: auto;
+				}
+				.control{
+					height: 24px;
+					width: 24px;
+					display: inline-block;
+					margin-left: 1%;
+					margin-right: 1%;
+					background-size: contain;
+				}
+				.control:hover{
+					box-shadow: 1px 1px 2px #888888;
+				}
+				#play{
+					background-image: url(play.svg);
+				}
+				#pause{
+					background-image: url(pause.svg);
+				}
+				#mute{
+					background-image: url(muted.svg);
+				}
+				#unmute{
+					background-image: url(unmuted.svg);
+				}
+				#volume{
+					height: 16px;
+					width: 100px;
+					display: inline-block;
+					margin-left: 1%;
+					margin-right: 1%;
+					border: none;
+				}
+				img{
+					display: block;
+					margin-top: 12px;
+					margin-left: auto;
+					margin-right: auto;
+					width: 25%;
+				}
+			</style>
+		</head>
+HERE;
 
 $stations = [
 	// groupname => [	{subgroupname => ''}
@@ -310,7 +347,9 @@ $stations = [
 			[ 'http://listen.radionomy.com/;', ''],
 	],
 ];
-echo "<script>
+
+echo <<<HERE
+	<script>
 		function showhidechannels(el) {
 			var channels = document.getElementById('channels');
 			var status = el.getAttribute('data-status');
@@ -324,9 +363,9 @@ echo "<script>
 				el.innerHTML = '<b>Stations:</b> [⇡]';
 			}
 		}
-	</script>";
+	</script>
 
-echo "<script>
+	<script>
 		function showhidegroup(el) {
 			var status = el.getAttribute('data-status');
 			var name = el.innerHTML;
@@ -341,14 +380,18 @@ echo "<script>
 				document.cookie = name+'=visible';
 			}
 		}
-	</script>";
+	</script>
+HERE;
 
-echo "<body>";
-echo "<div id='container'>\n";
 $date = date('l d M Y'); 
-echo "<pre class='date'>Page loaded on: {$date}</pre>";
-echo "<pre class='channels click' onclick='showhidechannels(this)' data-status='visible'><b>Stations:</b> [⇡]</pre>";
-echo "<form id='channels' method='post'>\n";
+echo <<<HERE
+	"<body>";
+		<div id='container'>
+			<pre class='date'>Page loaded on: {$date}</pre>
+			<pre class='channels click' onclick='showhidechannels(this)' data-status='visible'><b>Stations:</b> [⇡]</pre>
+			<form id='channels' method='post'>
+HERE;
+
 foreach($stations as $group => $station) {
 	if(!isset($_COOKIE[$group])) {
 		setcookie($group, 'hidden');  //should be set before any is outputted to page
@@ -380,33 +423,89 @@ if($s_group && $s_station) {
 		$buffer = preg_replace('/%TITLE%/i', 'Radio - stopped', $buffer);
 		echo $buffer;
 		echo "<pre>Please select radio a station</pre>\n";
-		echo "<audio id='audioplayer' controls autoplay></audio>\n";
 	} else {
 		$buffer = preg_replace('/%TITLE%/i', $s_station, $buffer);
 		echo $buffer;
 		echo "<pre>Listening to: {$s_station}</pre>";
 		$location = $stations[$s_group][$s_station][0];
 		$volume = $stations[$s_group][$s_station][1];
-		echo "<audio id='audioplayer' controls autoplay>\n
-				<source src='{$location}'>\n
-			</audio>\n";
+		if(!isset($volume) || $volume === '') {
+			$volume = 1;
+		}
+		$controls = <<<EOL
+					<div id='pause' class='control click' onclick="audiocontrol(this,'pause');"></div>
+					<div id='unmute' class='control click' onclick="audiocontrol(this,'mute');"></div>
+					<input id='volume' class='click' type='range' min='0' max='1' step='0.01' value='{$volume}' onchange="audiocontrol(this,'volume');"/>
+EOL;
+		echo "
+		<script>
+			window.addEventListener('DOMContentLoaded', function() {
+				//var audio = new Audio('{$location}');
+				var audio = document.createElement('audio');
+				audio.src = '{$location}';
+				audio.volume = {$volume};
+				audio.id = 'audioplayer';
+				audio.style.display = 'none';
+				audio.play();
+				document.body.appendChild(audio);
+			}, false);
+
+			function audiocontrol(el, action) {
+				var audioplayer = document.getElementById('audioplayer');
+				if(audioplayer) {
+					switch(action) {
+						case 'pause':
+							if(audioplayer.paused) {
+								audioplayer.play();
+								el.id = 'pause';
+								break;
+							}
+							audioplayer.pause();
+							el.id = 'play';
+							break;
+						case 'mute':
+							if(audioplayer.muted) {
+								audioplayer.muted = false;
+								document.getElementById('volume').value = audioplayer.volume;
+								el.id = 'unmute';
+								break;
+							}
+							audioplayer.muted = true;
+							document.getElementById('volume').value = 0;
+							el.id = 'mute';
+							break;
+						case 'volume':
+							var volume = el.value;
+							audioplayer.volume = volume;
+							if(volume > 0) {
+								mute = document.getElementById('mute');
+								if(mute) {
+									mute.id = 'unmute';
+								}
+								break;
+							}
+							unmute = document.getElementById('unmute');
+							if(unmute) {
+								unmute.id = 'mute';
+							}
+							break;
+					}
+				}
+			}
+		</script>";
 	}
 } else {
 	$buffer = preg_replace('/%TITLE%/i', 'Radio - none', $buffer);
 	echo $buffer;
 	echo "<pre>Please select radio a station</pre>\n";
-	echo "<audio id='audioplayer' controls autoplay></audio>\n";
 }
-echo "<img src='logo.png'/>";
-echo "</div>";
-echo "</body>";
-if(isset($volume) && $volume !== '') {
-	echo "
-	<script>
-		window.addEventListener('DOMContentLoaded', function() {
-			var audio = document.getElementById('audioplayer');
-			audio.volume = {$volume};
-		}, false);
-	</script>";
-}
+echo <<<HERE
+			<div id='audiocontrol'>
+					{$controls}
+				</div>
+				<img src='logo.png'/>
+			</div>
+		</body>
+	</html>
+HERE;
 ?>
