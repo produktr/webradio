@@ -233,6 +233,13 @@ echo	<<<HERE
 					margin-right: auto;
 					width: 25%;
 				}
+				pre.footer{
+					padding: 0px;
+					height: 3px;
+					color: gray;
+					margin-bottom: 0px;
+					font-size: 50%;
+				}
 			</style>
 		</head>
 HERE;
@@ -504,6 +511,7 @@ echo <<<HERE
 					{$controls}
 				</div>
 				<img src='logo.png'/>
+				<pre onclick='javascript:location.href = "http://github.com/produktr/webradio"' class='footer click' >github.com/produktr/webradio</pre></a>
 			</div>
 		</body>
 	</html>
