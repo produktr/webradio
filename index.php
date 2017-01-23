@@ -415,12 +415,12 @@ foreach($stations as $group => $station) {
 		if(isset($s_station) && $s_station === $name && $s_group === $group) {
 			$class .= ' active';
 		}
-		echo "<button class='click station {$class}' name='station' value='{$group}%SPLIT%{$name}'>{$name}</button>\n";//<br/>";
+		echo "<button class='click station {$class}' name='station' value='{$group}%SPLIT%{$name}'>{$name}</button>";
 	}
 	echo "</div>";
 }
-echo "</form>\n";
-echo "<form method='post'><button class='click station stop' name='station' value='stop%SPLIT%stop'>stop</button></form>\n";
+echo "</form>";
+echo "<form method='post'><button class='click station stop' name='station' value='stop%SPLIT%stop'>stop</button></form>";
 
 $buffer = ob_get_contents();
 ob_end_clean();
@@ -429,7 +429,7 @@ if(isset($s_group) && isset($s_station)) {
 	if($s_station === 'stop') {
 		$buffer = preg_replace('/%TITLE%/i', 'Radio - stopped', $buffer);
 		echo $buffer;
-		echo "<pre>Please select radio a station</pre>\n";
+		echo "<pre>Please select radio a station</pre>";
 	} else {
 		$buffer = preg_replace('/%TITLE%/i', $s_station, $buffer);
 		echo $buffer;
@@ -442,7 +442,8 @@ if(isset($s_group) && isset($s_station)) {
 		$controls = <<<EOL
 					<div id='pause' class='control click' onclick="audiocontrol(this,'pause');"></div>
 					<div id='unmute' class='control click' onclick="audiocontrol(this,'mute');"></div>
-					<input id='volume' class='click' type='range' min='0' max='1' step='0.01' value='{$volume}' onchange="audiocontrol(this,'volume');"/>
+					<input id='volume' class='click' type='range' min='0' max='1' step='0.01' value='{$volume}'
+					oninput="audiocontrol(this,'volume');"	onchange="audiocontrol(this,'volume');"/>
 EOL;
 		echo "
 		<script>
@@ -504,7 +505,7 @@ EOL;
 } else {
 	$buffer = preg_replace('/%TITLE%/i', 'Radio - none', $buffer);
 	echo $buffer;
-	echo "<pre>Please select radio a station</pre>\n";
+	echo "<pre>Please select radio a station</pre>";
 }
 echo <<<HERE
 			<div id='audiocontrol'>
