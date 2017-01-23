@@ -392,7 +392,7 @@ HERE;
 
 $date = date('l d M Y'); 
 echo <<<HERE
-	"<body>";
+	<body>
 		<div id='container'>
 			<pre class='date'>Page loaded on: {$date}</pre>
 			<pre class='channels click' onclick='showhidechannels(this)' data-status='visible'><b>Stations:</b> [⇡]</pre>
@@ -511,7 +511,7 @@ echo <<<HERE
 					{$controls}
 				</div>
 				<img src='logo.png'/>
-				<pre onclick='javascript:location.href = "http://github.com/produktr/webradio"' class='footer click' >github.com/produktr/webradio</pre></a>
+				<pre onclick="javascript:location.href = 'http://github.com/produktr/webradio'" class='footer click' >github.com/produktr/webradio</pre></a>
 			</div>
 		</body>
 	</html>
