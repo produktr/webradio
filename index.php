@@ -417,8 +417,8 @@ echo "<form method='post'><button class='click station stop' name='station' valu
 
 $buffer = ob_get_contents();
 ob_end_clean();
-
-if($s_group && $s_station) {
+$controls = '';
+if(isset($s_group) && isset($s_station)) {
 	if($s_station === 'stop') {
 		$buffer = preg_replace('/%TITLE%/i', 'Radio - stopped', $buffer);
 		echo $buffer;
