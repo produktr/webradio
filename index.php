@@ -272,7 +272,7 @@ $stations = [
 
 	'Electronic' => [
 		'House' => '--------------------------------------------------',
-		'deephouse' =>
+		'Deephouse' =>
 			['http://198.15.94.34:8006/stream/1/', ''],
 		'Dogglounge Deep House Radio' =>
 			[ 'http://master.dogglounge.com:9128/;', '0.5'],
@@ -310,7 +310,7 @@ $stations = [
 			[ 'http://82.73.58.87:7810/;', ''],
 		'NERadio Hardstyle' =>
 			[ 'http://1.hardstyle.nu:443/;', ''],
-		'gabberfmGabber FM' =>
+		'Gabber FM' =>
 			[ 'http://streaming.radionomy.com/Gabberfm?lang=en-GB%2cen-US%3bq%3d0.8%2cen%3bq%3d0.6', '0.6'],
 	],
 
@@ -320,6 +320,8 @@ $stations = [
 			[ 'http://icecast.omroep.nl/3fm-alternative-mp3', ''],
 		'Radio Veronica' =>
 			[ 'http://8543.live.streamtheworld.com/VERONICACMP3', ''],
+		'Slam FM' =>
+			['http://vip-icecast.538.lw.triple-it.nl/SLAMFM_MP3', ''],
 		'Radio Veronica 1000' =>
 			[ 'http://live.icecast.kpnstreaming.nl/skyradiolive-SRGSTR10.mp3', ''],
 		'Radio Veronica 80s' =>
