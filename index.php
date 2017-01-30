@@ -24,7 +24,6 @@ echo	<<<HERE
 				body{
 					background-color: black;
 					background-image: url(logo_no_fill.png);
-					background-position: center center;
 				}
 				#container{
 					width: 500px;
