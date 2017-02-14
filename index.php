@@ -440,6 +440,10 @@ if(isset($s_group) && isset($s_station)) {
 		if(!isset($volume) || $volume === '') {
 			$volume = 1;
 		}
+		if(isset($_COOKIE['volume'])) {
+			$set_volume = $_COOKIE['volume'];
+			$volume = ($set_volume / 1) * $volume;
+		}
 		$controls = <<<EOL
 					<div id='pause' class='control click' onclick="audiocontrol(this,'pause');"></div>
 					<div id='unmute' class='control click' onclick="audiocontrol(this,'mute');"></div>
@@ -486,6 +490,7 @@ EOL;
 						case 'volume':
 							var volume = el.value;
 							audioplayer.volume = volume;
+							document.cookie = 'volume='+volume;
 							if(volume > 0) {
 								mute = document.getElementById('mute');
 								if(mute) {
