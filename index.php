@@ -353,6 +353,8 @@ $stations = [
 			[ 'http://stream.radio.co/s98f81d47e/listen', '0.7'],
 		'Lounge' =>
 			[ 'http://listen.radionomy.com/;', ''],
+		'Seeburg 1000' =>
+			['http://74.82.59.197:8351/1?cb=762044.mp3', '']
 	],
 ];
 
