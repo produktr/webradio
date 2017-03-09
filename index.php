@@ -240,6 +240,7 @@ echo	<<<HERE
 					font-size: 50%;
 				}
 			</style>
+			<script src="https://cdn.jsdelivr.net/hls.js/latest/hls.min.js"></script>
 		</head>
 HERE;
 
@@ -255,7 +256,7 @@ $stations = [
 		'181.fm - Awesome 80s' =>
 			[ 'http://uplink.duplexfx.com:8000/;', ''],
 		'Liquidsoap Radio!' =>
-			[ 'http://stream.radiocorp.nl/r10_80s_mp3', ''],
+			[ 'http://538hls.lswcdn.triple-it.nl/content/web20/index.m3u8', '', 'hls'],
 
 		'90s' => '--------------------------------------------------',
 		'90s #1 fm' =>
@@ -439,8 +440,12 @@ if(isset($s_group) && isset($s_station)) {
 		echo "<pre>Listening to: {$s_station}</pre>";
 		$location = $stations[$s_group][$s_station][0];
 		$volume = $stations[$s_group][$s_station][1];
+		$type = $stations[$s_group][$s_station][2];
 		if(!isset($volume) || $volume === '') {
 			$volume = 1;
+		}
+		if(isset($type) || $type === 'hls'){
+			$hls = true;
 		}
 		if(isset($_COOKIE['volume'])) {
 			$set_volume = $_COOKIE['volume'];
@@ -455,9 +460,22 @@ EOL;
 		echo "
 		<script>
 			window.addEventListener('DOMContentLoaded', function() {
+				var hls = {$hls};
 				//var audio = new Audio('{$location}');
 				var audio = document.createElement('audio');
-				audio.src = '{$location}';
+				var location = '{$location}';
+				if(!hls){
+					audio.src = location;
+				} else {
+					if(Hls.isSupported()) {
+						var hls = new Hls();
+						hls.loadSource(location);
+						hls.attachMedia(audio);
+						hls.on(Hls.Events.MANIFEST_PARSED,function() {
+							audio.play();
+						});
+					}
+				}
 				audio.volume = {$volume};
 				audio.id = 'audioplayer';
 				audio.style.display = 'none';
