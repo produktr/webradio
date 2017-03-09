@@ -248,6 +248,9 @@ $stations = [
 	// groupname => [	{subgroupname => ''}
 	//					{station name => [location, init volume(0.0..1.0)]}]
 	'70/80/90/00s' => [
+		'70s' => '--------------------------------------------------',
+			'Left Coast 70s' =>
+				[ 'http://ice1.somafm.com/seventies-128-aac', ''],
 		'80s' => '--------------------------------------------------',
 		'80s #1' =>
 			[ 'http://50.7.76.254:9908/;stream/1', '0.8'],
@@ -276,10 +279,16 @@ $stations = [
 			['http://198.15.94.34:8006/stream/1/', ''],
 		'Dogglounge Deep House Radio' =>
 			[ 'http://master.dogglounge.com:9128/;', '0.5'],
+		'Beatblender' =>
+			['http://ice1.somafm.com/beatblender-128-aac', ''],
 
 		'Techno' => '-------------------------------------------------',
 		'Technomania' =>
 			[ 'http://stream.nauticradio.net:14240/;', ''],
+
+		'Downtempo' => '----------------------------------------------',
+		'Groove Salad' =>
+			['http://ice1.somafm.com/groovesalad-128-aac', ''],
 
 		'Dubstep' => '------------------------------------------------',
 		'Dubstep #1' =>
