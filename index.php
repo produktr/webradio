@@ -445,7 +445,7 @@ if(isset($s_group) && isset($s_station)) {
 			$volume = 1;
 		}
 		if(isset($type) || $type === 'hls'){
-			$hls = true;
+			$type = 'hls';
 		}
 		if(isset($_COOKIE['volume'])) {
 			$set_volume = $_COOKIE['volume'];
@@ -460,13 +460,11 @@ EOL;
 		echo "
 		<script>
 			window.addEventListener('DOMContentLoaded', function() {
-				var hls = {$hls};
+				var type = '{$type}';
 				//var audio = new Audio('{$location}');
 				var audio = document.createElement('audio');
 				var location = '{$location}';
-				if(!hls){
-					audio.src = location;
-				} else {
+				if(type === 'hls'){
 					if(Hls.isSupported()) {
 						var hls = new Hls();
 						hls.loadSource(location);
@@ -475,6 +473,8 @@ EOL;
 							audio.play();
 						});
 					}
+				}else{
+					audio.src = location;
 				}
 				audio.volume = {$volume};
 				audio.id = 'audioplayer';
