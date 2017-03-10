@@ -311,6 +311,8 @@ $stations = [
 			[ 'http://channel3.teknoradio.nl:8124/;', ''],
 
 		'French / Hardcore' => '---------------------------------------',
+		'HardcoreNL' =>
+			[ 'http://81.18.165.235/;', ''],
 		'HardcorePower' =>
 			[ 'http://src.shoutcaststream.com:8022/;', ''],
 		'FrenchCore' =>
