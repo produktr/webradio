@@ -312,7 +312,7 @@ $stations = [
 
 		'French / Hardcore' => '---------------------------------------',
 		'HardcoreNL' =>
-			[ 'http://81.18.165.235/;', ''],
+			[ 'http://81.18.165.235/;', '0.8'],
 		'HardcorePower' =>
 			[ 'http://src.shoutcaststream.com:8022/;', ''],
 		'FrenchCore' =>
