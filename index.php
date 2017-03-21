@@ -6,6 +6,9 @@ if(isset($_POST['station'])) {
 	$s_group = $x[0];
 	$s_station = $x[1];
 }
+if(!isset($_COOKIE['scroll'])){
+	$_COOKIE['scroll'] = 0;
+}
 echo	<<<HERE
 	<!DOCTYPE html>
 	<html lang="en-US">
@@ -403,6 +406,17 @@ echo <<<HERE
 			}
 		}
 	</script>
+
+	<script>
+		function setscroll(action){
+			var ch = document.getElementById('channels');
+			if(action === 'save'){
+				document.cookie = 'scroll='+ch.scrollTop;
+			}else{
+				ch.scrollTop = {$_COOKIE['scroll']};
+			}
+		}
+	</script>
 HERE;
 
 $date = date('l d M Y'); 
@@ -411,9 +425,8 @@ echo <<<HERE
 		<div id='container'>
 			<pre class='date'>Page loaded on: {$date}</pre>
 			<pre class='channels click' onclick='showhidechannels(this)' data-status='visible'><b>Stations:</b> [⇡]</pre>
-			<form id='channels' method='post'>
+			<form id='channels' method='post' onsubmit="setscroll('save')" >
 HERE;
-
 foreach($stations as $group => $station) {
 	if(!isset($_COOKIE[$group])) {
 		setcookie($group, 'hidden');  //should be set before any is outputted to page
@@ -435,7 +448,7 @@ foreach($stations as $group => $station) {
 	echo "</div>";
 }
 echo "</form>";
-echo "<form method='post'><button class='click station stop' name='station' value='stop%SPLIT%stop'>stop</button></form>";
+echo "<form method='post' onsubmit=\"setscroll('save')\" ><button class='click station stop' name='station' value='stop%SPLIT%stop'>stop</button></form>";
 
 $buffer = ob_get_contents();
 ob_end_clean();
@@ -551,6 +564,11 @@ echo <<<HERE
 				<img src='logo.png'/>
 				<pre onclick="javascript:location.href = 'http://github.com/produktr/webradio'" class='footer click' >github.com/produktr/webradio</pre></a>
 			</div>
+			<script>
+				window.addEventListener('DOMContentLoaded', function() {
+					setscroll();
+				}, false);
+			</script>
 		</body>
 	</html>
 HERE;
