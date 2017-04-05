@@ -461,7 +461,8 @@ if(isset($s_group) && isset($s_station)) {
 	} else {
 		$buffer = preg_replace('/%TITLE%/i', $s_station, $buffer);
 		echo $buffer;
-		echo "<pre>Listening to: {$s_station}</pre>";
+		//echo "<pre id='stationinfo'>Listening to: {$s_station}</pre>";
+		echo "<pre id='stationinfo'>Loading... {$s_station}</pre>";
 		$location = $stations[$s_group][$s_station][0];
 		$volume = $stations[$s_group][$s_station][1];
 		$type = $stations[$s_group][$s_station][2];
@@ -483,7 +484,12 @@ if(isset($s_group) && isset($s_station)) {
 EOL;
 		echo "
 		<script>
-			window.addEventListener('DOMContentLoaded', function() {
+			window.addEventListener('DOMContentLoaded', function() {setPlayer();}, false);
+
+			function setPlayer(){
+				if (document.contains(document.getElementById('audioplayer'))) {
+					document.getElementById('audioplayer').remove();
+				}
 				var type = '{$type}';
 				//var audio = new Audio('{$location}');
 				var audio = document.createElement('audio');
@@ -505,7 +511,56 @@ EOL;
 				audio.style.display = 'none';
 				audio.play();
 				document.body.appendChild(audio);
-			}, false);
+				(function(){
+					var y = setInterval(function(){ reportAudioState(y); }, 1000);
+				})();
+			};
+
+			var called = 0;
+			var laststate = '';
+			var retries = 0;
+
+			function reportAudioState(intervalid){
+				var audioelem = document.getElementById('audioplayer');
+				var stationinfo = document.getElementById('stationinfo');
+				var state = audioelem.readyState;
+
+				if(state === 0 || state === 1){
+					if(laststate === state){
+						laststate = state;
+						called++;
+					}else{
+						laststate = state;
+						called = 1;
+					}
+					if(called > 10){
+						laststate = state;
+						called = 0;
+						retries++;
+						if(retries > 0){
+							stationinfo.innerHTML = 'Error: {$s_station} offline';
+							clearInterval(intervalid);
+							return false;
+						}
+						setPlayer();
+					}
+				}
+				switch(state){
+					case 0:
+						stationinfo.innerHTML = 'Loading... {$s_station}';
+						break;
+					case 1:
+						stationinfo.innerHTML = 'Loading... {$s_station}';
+						break;
+					case 1:
+						stationinfo.innerHTML = '{$s_station} Almost ready';
+						break;
+					case 4:
+						stationinfo.innerHTML = 'Listening to: {$s_station}';
+						clearInterval(intervalid);
+						break;
+				}
+			}
 
 			function audiocontrol(el, action) {
 				var audioplayer = document.getElementById('audioplayer');
