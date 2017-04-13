@@ -297,7 +297,7 @@ $stations = [
 		'Dubstep #1' =>
 			[ 'http://stream.dubbase.fm:7002/;', '0.6'],
 
-		'Drum n Base' => '--------------------------------------------',
+		'Drum n Bass' => '--------------------------------------------',
 		'Beats n Breaks' =>
 			[ 'http://stream.nauticradio.net:14280/;', ''],
 		'DnB Liquified' =>
