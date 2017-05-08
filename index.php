@@ -248,8 +248,6 @@ echo	<<<HERE
 HERE;
 
 $stations = [
-	// groupname => [	{subgroupname => ''}
-	//					{station name => [location, init volume(0.0..1.0)]}]
 	'70/80/90/00s' => [
 		'70s' => '--------------------------------------------------',
 			'Left Coast 70s' =>
@@ -429,7 +427,7 @@ echo <<<HERE
 HERE;
 foreach($stations as $group => $station) {
 	if(!isset($_COOKIE[$group])) {
-		setcookie($group, 'hidden');  //should be set before any is outputted to page
+		setcookie($group, 'hidden');
 		$_COOKIE[$group] = 'hidden';
 	}
 	echo "<span class='group click' onclick='showhidegroup(this)' data-status='{$_COOKIE[$group]}'>{$group}</span>";
@@ -489,17 +487,21 @@ EOL;
 				var type = '{$type}';
 				var audio = document.createElement('audio');
 				var location = '{$location}';
-				if(type === 'hls'){
-					if(Hls.isSupported()) {
-						var hls = new Hls();
-						hls.loadSource(location);
-						hls.attachMedia(audio);
-						hls.on(Hls.Events.MANIFEST_PARSED,function() {
-							audio.play();
-						});
-					}
-				}else{
-					audio.src = location;
+				switch(type){
+					case 'hls':
+						if(Hls.isSupported()) {
+							var hls = new Hls();
+							hls.loadSource(location);
+							hls.attachMedia(audio);
+							hls.on(Hls.Events.MANIFEST_PARSED,function() {
+								audio.play();
+							});
+						}
+						break;
+					case 'rtp':
+					default:
+						audio.src = location;
+						break;
 				}
 				audio.volume = {$volume};
 				audio.id = 'audioplayer';
