@@ -253,123 +253,123 @@ $stations = [
 	'70/80/90/00s' => [
 		'70s' => '--------------------------------------------------',
 			'Left Coast 70s' =>
-				[ 'http://ice1.somafm.com/seventies-128-aac', ''],
+				[ 'http://ice1.somafm.com/seventies-128-aac', '', 'rtp'],
 		'80s' => '--------------------------------------------------',
 		'80s #1' =>
-			[ 'http://50.7.76.254:9908/;stream/1', '0.8'],
+			[ 'http://50.7.76.254:9908/;stream/1', '0.8', 'rtp'],
 		'181-80s' =>
-			[ 'http://listen.181fm.com/181-lite80s_128k.mp3', ''],
+			[ 'http://listen.181fm.com/181-lite80s_128k.mp3', '', 'rtp'],
 		'181.fm - Awesome 80s' =>
-			[ 'http://uplink.duplexfx.com:8000/;', ''],
+			[ 'http://uplink.duplexfx.com:8000/;', '', ''],
 		'Liquidsoap Radio!' =>
 			[ 'http://538hls.lswcdn.triple-it.nl/content/web20/index.m3u8', '', 'hls'],
 
 		'90s' => '--------------------------------------------------',
 		'90s #1 fm' =>
-			[ 'http://19353.live.streamtheworld.com/977_90_SC', ''],
+			[ 'http://19353.live.streamtheworld.com/977_90_SC', '', 'rtp'],
 		'965crush fm' =>
-			[ 'http://us4.internet-radio.com:8062/;', ''],
+			[ 'http://us4.internet-radio.com:8062/;', '', 'rtp'],
 		'Harder-FM Eurodance' =>
-			[ 'http://uk5.internet-radio.com:8325/;', ''],
+			[ 'http://uk5.internet-radio.com:8325/;', '', 'rtp'],
 
 		'00s' => '----------------------------------------------------',
-		'2000 FM' => [ 'http://bigrradio-edge1.cdnstream.com/5106_128', ''],
+		'2000 FM' => [ 'http://bigrradio-edge1.cdnstream.com/5106_128', '', 'rtp'],
 	],
 
 	'Electronic' => [
 		'House' => '--------------------------------------------------',
 		'Deephouse' =>
-			['http://198.15.94.34:8006/stream/1/', ''],
+			['http://198.15.94.34:8006/stream/1/', ''. 'rtp'],
 		'Dogglounge Deep House Radio' =>
-			[ 'http://master.dogglounge.com:9128/;', '0.5'],
+			[ 'http://master.dogglounge.com:9128/;', '0.5', 'rtp'],
 		'Beatblender' =>
-			['http://ice1.somafm.com/beatblender-128-aac', ''],
+			['http://ice1.somafm.com/beatblender-128-aac', '', 'rtp'],
 
 		'Techno' => '-------------------------------------------------',
 		'Technomania' =>
-			[ 'http://stream.nauticradio.net:14240/;', ''],
+			[ 'http://stream.nauticradio.net:14240/;', '', 'rtp'],
 
 		'Downtempo' => '----------------------------------------------',
 		'Groove Salad' =>
-			['http://ice1.somafm.com/groovesalad-128-aac', ''],
+			['http://ice1.somafm.com/groovesalad-128-aac', '', 'rtp'],
 
 		'Dubstep' => '------------------------------------------------',
 		'Dubstep #1' =>
-			[ 'http://stream.dubbase.fm:7002/;', '0.6'],
+			[ 'http://stream.dubbase.fm:7002/;', '0.6', 'rtp'],
 
 		'Drum n Bass' => '--------------------------------------------',
 		'Beats n Breaks' =>
-			[ 'http://stream.nauticradio.net:14280/;', ''],
+			[ 'http://stream.nauticradio.net:14280/;', '', 'rtp'],
 		'DnB Liquified' =>
-			[ 'http://st8.webradioworld.net:8000/;', ''],
+			[ 'http://st8.webradioworld.net:8000/;', '', 'rtp'],
 		'DnB Jungle' =>
-			[ 'http://trace.dnbradio.com/dnbradio_main.mp3', '0.9'],
+			[ 'http://trace.dnbradio.com/dnbradio_main.mp3', '0.9', 'rtp'],
 
 		'Tekno' => '--------------------------------------------------',
 		'Tekno #1' =>
-			[ 'http://channel1.teknoradio.nl:8064/;', ''],
+			[ 'http://channel1.teknoradio.nl:8064/;', '', 'rtp'],
 		'Tekno #2' =>
-			[ 'http://channel2.teknoradio.nl:8126/;', ''],
+			[ 'http://channel2.teknoradio.nl:8126/;', '', 'rtp'],
 		'Tekno #3' =>
-			[ 'http://channel3.teknoradio.nl:8124/;', ''],
+			[ 'http://channel3.teknoradio.nl:8124/;', '', 'rtp'],
 
 		'French / Hardcore' => '---------------------------------------',
 		'HardcoreNL' =>
-			[ 'http://81.18.165.235/;', '0.8'],
+			[ 'http://81.18.165.235/;', '0.8', ''],
 		'HardcorePower' =>
-			[ 'http://src.shoutcaststream.com:8022/;', ''],
+			[ 'http://src.shoutcaststream.com:8022/;', '', 'rtp'],
 		'FrenchCore' =>
-			[ 'http://frenchcore24.myetrayz.net:9001/ices', ''],
+			[ 'http://frenchcore24.myetrayz.net:9001/ices', '', 'rtp'],
 		'HardCoreRadioSeek' =>
-			[ 'http://82.73.58.87:7810/;', ''],
+			[ 'http://82.73.58.87:7810/;', '', 'rtp'],
 		'NERadio Hardstyle' =>
-			[ 'http://1.hardstyle.nu:443/;', ''],
+			[ 'http://1.hardstyle.nu:443/;', '', 'rtp'],
 		'Gabber FM' =>
-			[ 'http://streaming.radionomy.com/Gabberfm?lang=en-GB%2cen-US%3bq%3d0.8%2cen%3bq%3d0.6', '0.6'],
+			[ 'http://streaming.radionomy.com/Gabberfm?lang=en-GB%2cen-US%3bq%3d0.8%2cen%3bq%3d0.6', '0.6', 'rtp'],
 	],
 
 	'Regular' => [
 		'Dutch' => '--------------------------------------------------',
 		'3FM Alternative' =>
-			[ 'http://icecast.omroep.nl/3fm-alternative-mp3', ''],
+			[ 'http://icecast.omroep.nl/3fm-alternative-mp3', '', 'rtp'],
 		'Radio Veronica' =>
-			[ 'http://8543.live.streamtheworld.com/VERONICACMP3', ''],
+			[ 'http://8543.live.streamtheworld.com/VERONICACMP3', '', 'rtp'],
 		'Slam FM' =>
-			['http://vip-icecast.538.lw.triple-it.nl/SLAMFM_MP3', ''],
+			['http://vip-icecast.538.lw.triple-it.nl/SLAMFM_MP3', '', 'rtp'],
 		'Radio Veronica 1000' =>
-			[ 'http://live.icecast.kpnstreaming.nl/skyradiolive-SRGSTR10.mp3', ''],
+			[ 'http://live.icecast.kpnstreaming.nl/skyradiolive-SRGSTR10.mp3', '', 'rtp'],
 		'Radio Veronica 80s' =>
-			[ 'http://live.icecast.kpnstreaming.nl/skyradiolive-SRGSTR12.mp3', ''],
+			[ 'http://live.icecast.kpnstreaming.nl/skyradiolive-SRGSTR12.mp3', '', 'rtp'],
 		'Radio Veronica 90s' =>
-			[ 'http://live.icecast.kpnstreaming.nl/skyradiolive-SRGSTR13.mp3', ''],
+			[ 'http://live.icecast.kpnstreaming.nl/skyradiolive-SRGSTR13.mp3', '', 'rtp'],
 		'Radio 8FM [Noordoost Brabant]' =>
-			[ 'http://breedband.radio8fm.nl:8802/;', ''],
+			[ 'http://breedband.radio8fm.nl:8802/;', '', 'rtp'],
 		'Next Movement' =>
-			[ 'http://stream.nauticradio.net:14230/;', ''],
+			[ 'http://stream.nauticradio.net:14230/;', '', 'rtp'],
 		'Vodoo Gospel' =>
-			[ 'http://stream.nauticradio.net:14260/;', '0.9'],
+			[ 'http://stream.nauticradio.net:14260/;', '0.9', 'rtp'],
 		'Zwarte Hemel' =>
-			[ 'http://stream.nauticradio.net:14220/;', ''],
+			[ 'http://stream.nauticradio.net:14220/;', '', 'rtp'],
 
 		'International' => '------------------------------------------',
 		'Box UK Radio' =>
-			[ 'http://uk2.internet-radio.com:31076/;', ''],
+			[ 'http://uk2.internet-radio.com:31076/;', '', 'rtp'],
 		'RSO 91.7 THESSALONIKI' =>
-			[ 'http://live.isolservers.com:8200/', ''],
+			[ 'http://live.isolservers.com:8200/', '', 'rtp'],
 		'NSBRadio.co.uk' =>
-			[ 'http://live.nsbradio.co.uk:7904/;', ''],
+			[ 'http://live.nsbradio.co.uk:7904/;', '', 'rtp'],
 		'FM4 - ORF' =>
-			[ 'http://mp3stream1.apasf.apa.at:8000/;', ''],
+			[ 'http://mp3stream1.apasf.apa.at:8000/;', '', 'rtp'],
 	],
 	'Other' => [
 		'Vaporwave #1' => 
-			[ 'https://plaza.one/mp3', ''],
+			[ 'https://plaza.one/mp3', 'rtp'],
 		'Poolside' =>
-			[ 'http://stream.radio.co/s98f81d47e/listen', '0.7'],
+			[ 'http://stream.radio.co/s98f81d47e/listen', '0.7', 'rtp'],
 		'Lounge' =>
-			[ 'http://listen.radionomy.com/;', ''],
+			[ 'http://listen.radionomy.com/;', 'rtp'],
 		'Seeburg 1000' =>
-			['http://74.82.59.197:8351/1?cb=762044.mp3', '']
+			['http://74.82.59.197:8351/1?cb=762044.mp3', '', 'rtp']
 	],
 ];
 
@@ -468,9 +468,6 @@ if(isset($s_group) && isset($s_station)) {
 		if(!isset($volume) || $volume === '') {
 			$volume = 1;
 		}
-		if(isset($type) || $type === 'hls'){
-			$type = 'hls';
-		}
 		if(isset($_COOKIE['volume'])) {
 			$set_volume = $_COOKIE['volume'];
 			$volume = ($set_volume / 1) * $volume;
@@ -490,7 +487,6 @@ EOL;
 					document.getElementById('audioplayer').remove();
 				}
 				var type = '{$type}';
-				//var audio = new Audio('{$location}');
 				var audio = document.createElement('audio');
 				var location = '{$location}';
 				if(type === 'hls'){
