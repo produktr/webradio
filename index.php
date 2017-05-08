@@ -461,7 +461,6 @@ if(isset($s_group) && isset($s_station)) {
 	} else {
 		$buffer = preg_replace('/%TITLE%/i', $s_station, $buffer);
 		echo $buffer;
-		//echo "<pre id='stationinfo'>Listening to: {$s_station}</pre>";
 		echo "<pre id='stationinfo'>Loading... {$s_station}</pre>";
 		$location = $stations[$s_group][$s_station][0];
 		$volume = $stations[$s_group][$s_station][1];
