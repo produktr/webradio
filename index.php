@@ -26,7 +26,6 @@ echo	<<<HERE
 				}
 				body{
 					background-color: black;
-					background-image: url(logo_no_fill.png);
 				}
 				#container{
 					width: 500px;
@@ -620,6 +619,51 @@ echo <<<HERE
 				window.addEventListener('DOMContentLoaded', function() {
 					setscroll();
 				}, false);
+			</script>
+			<script>
+				var cv = document.createElement('canvas');
+				colors = ['#B5382F','#E74C3C','#BC5E00','#EE7700',
+					'#BF980A','#F1C40F','#0E6E59','#16A085','#246E9F',
+					'#3498DB','#0000BB','#0000ED','#6E4084','#9B59B6',];
+				colors.reverse();
+				cv.width = 304;
+				cv.height = 304;
+				cv.style.width = "304px";
+				cv.style.height = "304px";
+				var cvx = cv.getContext('2d');
+				cvx.webkitImageSmoothingEnabled = false;
+				cvx.mozImageSmoothingEnabled = false;
+				cvx.imageSmoothingEnabled = false; /// future
+				var x = y = 64;
+				for(i = 0; i < 14; i++){
+					if(i % 2){
+						cvx.beginPath();
+						cvx.lineWidth = 3;
+						cvx.strokeStyle = colors[i];
+						cvx.moveTo(x+2.5,y+1);
+						cvx.lineTo(x+2.5,y+220);
+						cvx.stroke();
+						cvx.moveTo(x+2.5,y+2.5);
+						cvx.lineTo(x+220,y+2.5);
+						cvx.stroke();
+						cvx.moveTo(x+6.5+220,y-4);
+						cvx.lineTo(x+6.5+220,y+6+220);
+						cvx.stroke();
+						cvx.moveTo(x-4,y+1+220+5.5);
+						cvx.lineTo(x+3+220+5,y+1+220+5.5);
+						cvx.stroke();
+						x = y -= 8;
+					}else{
+						cvx.beginPath();
+						cvx.rect(x,y,224,224);
+						cvx.lineWidth = 8;
+						cvx.strokeStyle = colors[i];
+						cvx.stroke();
+					}
+				}
+				var url = cv.toDataURL();
+				document.body.style.backgroundImage = "url("+url+")";
+				document.body.style.backgroundPosition = "-75% -0%";
 			</script>
 		</body>
 	</html>
