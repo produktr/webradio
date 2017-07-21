@@ -264,10 +264,8 @@ $stations = [
 		'90s' => '--------------------------------------------------',
 		'90s #1 fm' =>
 			[ 'http://19353.live.streamtheworld.com/977_90_SC', '', 'rtp'],
-		'965crush fm' =>
-			[ 'http://us4.internet-radio.com:8062/;', '', 'rtp'],
-		'Harder-FM Eurodance' =>
-			[ 'http://uk5.internet-radio.com:8325/;', '', 'rtp'],
+		'90s Radio 10' =>
+			[ 'http://vip-icecast.538.lw.triple-it.nl/WEB22_MP3', '', 'rtp'],
 
 		'00s' => '----------------------------------------------------',
 		'2000 FM' => [ 'http://bigrradio-edge1.cdnstream.com/5106_128', '', 'rtp'],
@@ -276,7 +274,7 @@ $stations = [
 	'Electronic' => [
 		'House' => '--------------------------------------------------',
 		'Deephouse' =>
-			['http://198.15.94.34:8006/stream/1/', ''. 'rtp'],
+			['http://198.15.94.34:8006/stream', '', 'rtp'],
 		'Dogglounge Deep House Radio' =>
 			[ 'http://master.dogglounge.com:9128/;', '0.5', 'rtp'],
 		'Beatblender' =>
@@ -315,10 +313,6 @@ $stations = [
 			[ 'http://81.18.165.235/;', '0.8', ''],
 		'HardcorePower' =>
 			[ 'http://src.shoutcaststream.com:8022/;', '', 'rtp'],
-		'FrenchCore' =>
-			[ 'http://frenchcore24.myetrayz.net:9001/ices', '', 'rtp'],
-		'HardCoreRadioSeek' =>
-			[ 'http://82.73.58.87:7810/;', '', 'rtp'],
 		'NERadio Hardstyle' =>
 			[ 'http://1.hardstyle.nu:443/;', '', 'rtp'],
 		'Gabber FM' =>
@@ -329,10 +323,11 @@ $stations = [
 		'Dutch' => '--------------------------------------------------',
 		'3FM Alternative' =>
 			[ 'http://icecast.omroep.nl/3fm-alternative-mp3', '', 'rtp'],
-		'Radio Veronica' =>
+/*		'Radio Veronica' =>
 			[ 'http://8543.live.streamtheworld.com/VERONICACMP3', '', 'rtp'],
 		'Slam FM' =>
 			['http://vip-icecast.538.lw.triple-it.nl/SLAMFM_MP3', '', 'rtp'],
+*/
 		'Radio Veronica 1000' =>
 			[ 'http://live.icecast.kpnstreaming.nl/skyradiolive-SRGSTR10.mp3', '', 'rtp'],
 		'Radio Veronica 80s' =>
@@ -349,10 +344,6 @@ $stations = [
 			[ 'http://stream.nauticradio.net:14220/;', '', 'rtp'],
 
 		'International' => '------------------------------------------',
-		'Box UK Radio' =>
-			[ 'http://uk2.internet-radio.com:31076/;', '', 'rtp'],
-		'RSO 91.7 THESSALONIKI' =>
-			[ 'http://live.isolservers.com:8200/', '', 'rtp'],
 		'NSBRadio.co.uk' =>
 			[ 'http://live.nsbradio.co.uk:7904/;', '', 'rtp'],
 		'FM4 - ORF' =>
