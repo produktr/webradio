@@ -360,11 +360,11 @@ $stations = [
 	],
 	'Other' => [
 		'Vaporwave #1' => 
-			[ 'https://plaza.one/mp3', 'rtp'],
+			[ 'https://plaza.one/mp3', '', 'rtp'],
 		'Poolside' =>
 			[ 'http://stream.radio.co/s98f81d47e/listen', '0.7', 'rtp'],
 		'Lounge' =>
-			[ 'http://listen.radionomy.com/;', 'rtp'],
+			[ 'http://listen.radionomy.com/;', '','rtp'],
 		'Seeburg 1000' =>
 			['http://74.82.59.197:8351/1?cb=762044.mp3', '', 'rtp']
 	],
