@@ -271,6 +271,22 @@ $stations = [
 		'2000 FM' => [ 'http://bigrradio-edge1.cdnstream.com/5106_128', '', 'rtp'],
 	],
 
+	'Rock' => [
+		'Classic' => '------------------------------------------------',
+			'Arrow' => 
+				[ 'http://91.221.151.155/;?allradio.nl&1501067066', '', 'rtp'],
+			'Classic Rock Florida' => 
+				[ 'http://us2.internet-radio.com/proxy/classicrock160?mp=/;', '', 'rtp'],
+			'Classic Rock Planet' => 
+				[ 'http://uk6.internet-radio.com:8022/;stream', '', 'rtp'],
+			'Classic Rock New York' => 
+				[ 'http://us2.internet-radio.com:8351/;stream', '', 'rtp'],
+			'Classic Rock Miami' => 
+				[ 'http://us2.internet-radio.com/proxy/classicrockmiamiplus?mp=/;', '', 'rtp'],
+			'Disco Classic Radio' => 
+				[ 'http://discoclassicradio.shoutcaststream.com:8312/stream;?allradio.nl&1501067121', '', 'rtp'],
+	],
+
 	'Electronic' => [
 		'House' => '--------------------------------------------------',
 		'Deephouse' =>
