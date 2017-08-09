@@ -526,63 +526,76 @@ EOL;
 				audio.id = 'audioplayer';
 				audio.style.display = 'none';
 				audio.play();
-				// create audioContext
-				var audioContext = new (window.AudioContext || window.webkitAudioContext)();
-				var source = audioContext.createMediaElementSource(audio);
-				// create analyser
-				var analyser = audioContext.createAnalyser();
-				// connect audio to analyser
-				source.connect(analyser);
-				// parse
-				analyser.fftSize = 256;
-				var bufferLength = analyser.frequencyBinCount;
-				console.log(bufferLength);
-				var dataArray = new Uint8Array(bufferLength);
-				// create canvasContext
-				var canvas = document.getElementById('osc');
-				var canvasCtx = canvas.getContext('2d');
-				colors = ['#B5382F','#E74C3C','#BC5E00','#EE7700',
-				'#BF980A','#F1C40F','#0E6E59','#16A085','#246E9F',
-				'#3498DB','#0000BB','#0000ED','#6E4084','#9B59B6',];
-				useColor = colors[Math.floor(Math.random() * 13)];
-				function drawOsc() {
-					drawVisual = requestAnimationFrame(drawOsc);
 
-					analyser.getByteTimeDomainData(dataArray);
-					canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+				var playPromise = audio.play();
 
-					canvasCtx.fillStyle = 'rgba(160, 160, 160, 0)';
-					canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
+				if (playPromise !== undefined) {
+					playPromise.then(function() {
+						// create audioContext
+						var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+						var source = audioContext.createMediaElementSource(audio);
+						// connect source to browser audio out
+						source.connect(audioContext.destination);
+						// create analyser
+						var analyser = audioContext.createAnalyser();
+						// connect audio to analyser
+						source.connect(analyser);
+						// parse
+						analyser.fftSize = 256;
+						var bufferLength = analyser.frequencyBinCount;
+						console.log(bufferLength);
+						var dataArray = new Uint8Array(bufferLength);
+						// create canvasContext
+						var canvas = document.getElementById('osc');
+						var canvasCtx = canvas.getContext('2d');
+						colors = ['#B5382F','#E74C3C','#BC5E00','#EE7700',
+						'#BF980A','#F1C40F','#0E6E59','#16A085','#246E9F',
+						'#3498DB','#0000BB','#0000ED','#6E4084','#9B59B6',];
+						useColor = colors[Math.floor(Math.random() * 13)];
+						function drawOsc() {
+							drawVisual = requestAnimationFrame(drawOsc);
 
-					canvasCtx.lineWidth = 4;
-					canvasCtx.strokeStyle = useColor;
+							analyser.getByteTimeDomainData(dataArray);
+							canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
 
-					canvasCtx.beginPath();
+							canvasCtx.fillStyle = 'rgba(160, 160, 160, 0)';
+							canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
 
-					var sliceWidth = canvas.width * 1.0 / bufferLength;
-					var x = 0;
+							canvasCtx.lineWidth = 4;
+							canvasCtx.strokeStyle = useColor;
 
-					for(var i = 0; i < bufferLength; i++) {
+							canvasCtx.beginPath();
 
-						var v = dataArray[i] / 128.0;
-						var y = v * canvas.height/2;
+							var sliceWidth = canvas.width * 1.0 / bufferLength;
+							var x = 0;
 
-						if(i === 0) {
-							canvasCtx.moveTo(x, y);
-						} else {
-							canvasCtx.lineTo(x, y);
-						}
+							for(var i = 0; i < bufferLength; i++) {
 
-						x += sliceWidth;
-					}
+								var v = dataArray[i] / 128.0;
+								var y = v * canvas.height/2;
 
-					canvasCtx.lineTo(canvas.width, canvas.height/2);
-					canvasCtx.stroke();
-				};
-				drawOsc();
+								if(i === 0) {
+									canvasCtx.moveTo(x, y);
+								} else {
+									canvasCtx.lineTo(x, y);
+								}
 
-				// connect source to browser audio out
-				source.connect(audioContext.destination);
+								x += sliceWidth;
+							}
+
+							canvasCtx.lineTo(canvas.width, canvas.height/2);
+							canvasCtx.stroke();
+						};
+						drawOsc();
+					}).catch(function(error) {
+					audio.src = '';
+					audio.load();
+						audio.removeAttribute('crossOrigin');
+						audio.src = location;
+						audio.play();
+					});
+				}
+
 				// append audio to body
 				document.body.appendChild(audio);
 				(function(){
