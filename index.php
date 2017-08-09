@@ -234,6 +234,18 @@ echo	<<<HERE
 					margin-right: auto;
 					width: 25%;
 				}
+				#osc{
+					display: block;
+					margin-top: 12px;
+					width: 75%;
+					height: 75px;
+					margin-left: auto;
+					margin-right: auto;
+					border-top: 5px solid gray;
+					border-right: 5px solid lightgray;
+					border-bottom: 5px solid lightgray;
+					border-left: 5px solid gray;
+				}
 				pre.footer{
 					padding: 0px;
 					height: 3px;
@@ -493,6 +505,7 @@ EOL;
 				var type = '{$type}';
 				var audio = document.createElement('audio');
 				var location = '{$location}';
+				audio.crossOrigin = 'anonymous';
 				switch(type){
 					case 'hls':
 						if(Hls.isSupported()) {
@@ -513,6 +526,64 @@ EOL;
 				audio.id = 'audioplayer';
 				audio.style.display = 'none';
 				audio.play();
+				// create audioContext
+				var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+				var source = audioContext.createMediaElementSource(audio);
+				// create analyser
+				var analyser = audioContext.createAnalyser();
+				// connect audio to analyser
+				source.connect(analyser);
+				// parse
+				analyser.fftSize = 256;
+				var bufferLength = analyser.frequencyBinCount;
+				console.log(bufferLength);
+				var dataArray = new Uint8Array(bufferLength);
+				// create canvasContext
+				var canvas = document.getElementById('osc');
+				var canvasCtx = canvas.getContext('2d');
+				colors = ['#B5382F','#E74C3C','#BC5E00','#EE7700',
+				'#BF980A','#F1C40F','#0E6E59','#16A085','#246E9F',
+				'#3498DB','#0000BB','#0000ED','#6E4084','#9B59B6',];
+				useColor = colors[Math.floor(Math.random() * 13)];
+				function drawOsc() {
+					drawVisual = requestAnimationFrame(drawOsc);
+
+					analyser.getByteTimeDomainData(dataArray);
+					canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+
+					canvasCtx.fillStyle = 'rgba(160, 160, 160, 0)';
+					canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
+
+					canvasCtx.lineWidth = 4;
+					canvasCtx.strokeStyle = useColor;
+
+					canvasCtx.beginPath();
+
+					var sliceWidth = canvas.width * 1.0 / bufferLength;
+					var x = 0;
+
+					for(var i = 0; i < bufferLength; i++) {
+
+						var v = dataArray[i] / 128.0;
+						var y = v * canvas.height/2;
+
+						if(i === 0) {
+							canvasCtx.moveTo(x, y);
+						} else {
+							canvasCtx.lineTo(x, y);
+						}
+
+						x += sliceWidth;
+					}
+
+					canvasCtx.lineTo(canvas.width, canvas.height/2);
+					canvasCtx.stroke();
+				};
+				drawOsc();
+
+				// connect source to browser audio out
+				source.connect(audioContext.destination);
+				// append audio to body
 				document.body.appendChild(audio);
 				(function(){
 					var y = setInterval(function(){ reportAudioState(y); }, 1000);
@@ -619,7 +690,7 @@ echo <<<HERE
 			<div id='audiocontrol'>
 					{$controls}
 				</div>
-				<img src='logo.png'/>
+				<canvas id='osc'></canvas>
 				<pre onclick="javascript:location.href = 'http://github.com/produktr/webradio'" class='footer click' >github.com/produktr/webradio</pre></a>
 			</div>
 			<script>
