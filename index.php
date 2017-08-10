@@ -1,6 +1,7 @@
 <?php
 ob_start();
 header('Content-Type: text/html; charset=utf-8');
+define('C_CORS', true);
 if(isset($_POST['station'])) {
 	$x = explode("%SPLIT%", $_POST['station']);
 	$s_group = $x[0];
@@ -351,11 +352,6 @@ $stations = [
 		'Dutch' => '--------------------------------------------------',
 		'3FM Alternative' =>
 			[ 'http://icecast.omroep.nl/3fm-alternative-mp3', '', 'rtp'],
-/*		'Radio Veronica' =>
-			[ 'http://8543.live.streamtheworld.com/VERONICACMP3', '', 'rtp'],
-		'Slam FM' =>
-			['http://vip-icecast.538.lw.triple-it.nl/SLAMFM_MP3', '', 'rtp'],
-*/
 		'Radio Veronica 1000' =>
 			[ 'http://live.icecast.kpnstreaming.nl/skyradiolive-SRGSTR10.mp3', '', 'rtp'],
 		'Radio Veronica 80s' =>
@@ -479,6 +475,9 @@ if(isset($s_group) && isset($s_station)) {
 		echo $buffer;
 		echo "<pre id='stationinfo'>Loading... {$s_station}</pre>";
 		$location = $stations[$s_group][$s_station][0];
+		if(C_CORS){
+			$location = '/c_cors/'.preg_replace('/http[s]?:\/\//', '', $location);
+		}
 		$volume = $stations[$s_group][$s_station][1];
 		$type = $stations[$s_group][$s_station][2];
 		if(!isset($volume) || $volume === '') {
@@ -525,7 +524,6 @@ EOL;
 				audio.volume = {$volume};
 				audio.id = 'audioplayer';
 				audio.style.display = 'none';
-				audio.play();
 
 				var playPromise = audio.play();
 
@@ -554,35 +552,25 @@ EOL;
 						useColor = colors[Math.floor(Math.random() * 13)];
 						function drawOsc() {
 							drawVisual = requestAnimationFrame(drawOsc);
-
 							analyser.getByteTimeDomainData(dataArray);
 							canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
-
 							canvasCtx.fillStyle = 'rgba(160, 160, 160, 0)';
 							canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
-
 							canvasCtx.lineWidth = 4;
 							canvasCtx.strokeStyle = useColor;
-
 							canvasCtx.beginPath();
-
 							var sliceWidth = canvas.width * 1.0 / bufferLength;
 							var x = 0;
-
 							for(var i = 0; i < bufferLength; i++) {
-
 								var v = dataArray[i] / 128.0;
 								var y = v * canvas.height/2;
-
 								if(i === 0) {
 									canvasCtx.moveTo(x, y);
 								} else {
 									canvasCtx.lineTo(x, y);
 								}
-
 								x += sliceWidth;
 							}
-
 							canvasCtx.lineTo(canvas.width, canvas.height/2);
 							canvasCtx.stroke();
 						};
@@ -596,7 +584,7 @@ EOL;
 					});
 				}
 
-				// append audio to body
+				// append audio to body (for play/pause/mute/unmute/volume)
 				document.body.appendChild(audio);
 				(function(){
 					var y = setInterval(function(){ reportAudioState(y); }, 1000);
