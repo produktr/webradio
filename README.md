@@ -7,7 +7,7 @@ Drawbacks? All of them... (more to load)
 
 ### How does it look
 
-![preview](preview.png)
+![preview](preview.png)  
 [See it in action](http://pointwood.pw/webradio)
 
 ### Stations
@@ -27,9 +27,9 @@ Not all sources has the header Access-Control-Allow-Origin set correct.
 To circumvent CORS restrictions you could set up a reverse proxy:  
 
 Apache 2 example:  
-	`# Proxy for circumventing CORS restrictions (webradio)  
-	ProxyPassMatch ^/c_cors/(.*)$ http://$1  
-	Header set Access-Control-Allow-Origin "*"`  
+	`# Proxy for circumventing CORS restrictions (webradio)`
+	`ProxyPassMatch ^/c_cors/(.*)$ http://$1`
+	`Header set Access-Control-Allow-Origin "*"`
 
 Configuration (top of index file):  
 	`define('C_CORS', true); // circumvent CORS (use proxy)`  
