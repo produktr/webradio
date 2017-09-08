@@ -374,6 +374,14 @@ $stations = [
 			[ 'http://mp3stream1.apasf.apa.at:8000/;', '', 'rtp'],
 	],
 	'Other' => [
+		'Generation Soul Disco Funk' =>
+			[ 'http://event.generationdiscofunk.com:8000/;', '0.7', ''],
+		'Disco Paradise' =>
+			['http://144.217.129.213:9122/;*.mp3', '', ''],
+		'B4B' =>
+			['http://b4bdiscofunk.ice.infomaniak.ch/b4bdiscofunk-128.mp3', '0.7', ''],
+		'STOMP' =>
+			['http://149.255.59.162:8064/live', '0.9', ''],
 		'Vaporwave #1' => 
 			[ 'https://plaza.one/mp3', '', 'rtp'],
 		'Poolside' =>
