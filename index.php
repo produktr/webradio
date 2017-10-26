@@ -352,12 +352,14 @@ $stations = [
 		'Dutch' => '--------------------------------------------------',
 		'3FM Alternative' =>
 			[ 'http://icecast.omroep.nl/3fm-alternative-mp3', '', 'rtp'],
+/*
 		'Radio Veronica 1000' =>
 			[ 'http://live.icecast.kpnstreaming.nl/skyradiolive-SRGSTR10.mp3', '', 'rtp'],
 		'Radio Veronica 80s' =>
 			[ 'http://live.icecast.kpnstreaming.nl/skyradiolive-SRGSTR12.mp3', '', 'rtp'],
 		'Radio Veronica 90s' =>
 			[ 'http://live.icecast.kpnstreaming.nl/skyradiolive-SRGSTR13.mp3', '', 'rtp'],
+*/
 		'Radio 8FM [Noordoost Brabant]' =>
 			[ 'http://breedband.radio8fm.nl:8802/;', '', 'rtp'],
 		'Next Movement' =>
