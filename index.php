@@ -374,6 +374,8 @@ $stations = [
 			[ 'http://live.nsbradio.co.uk:7904/;', '', 'rtp'],
 		'FM4 - ORF' =>
 			[ 'http://mp3stream1.apasf.apa.at:8000/;', '', 'rtp'],
+		'WDR4' => 
+			[ 'http://wdr-wdr4-live.cast.addradio.de/wdr/wdr4/live/mp3/128/stream.mp3', '', 'rtp'],
 	],
 	'Other' => [
 		'Generation Soul Disco Funk' =>
