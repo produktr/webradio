@@ -271,8 +271,8 @@ $stations = [
 			[ 'http://listen.181fm.com/181-lite80s_128k.mp3', '', 'rtp'],
 		'181.fm - Awesome 80s' =>
 			[ 'http://uplink.duplexfx.com:8000/;', '', ''],
-		'Liquidsoap Radio!' =>
-			[ 'http://538hls.lswcdn.triple-it.nl/content/web20/index.m3u8', '', 'hls'],
+		'1000 HITS 80s' =>
+			[ 'http://91.121.155.204:8048/;stream/1', '', 'rtp'],
 
 		'90s' => '--------------------------------------------------',
 		'90s #1 fm' =>
