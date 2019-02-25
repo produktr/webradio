@@ -623,7 +623,7 @@ EOL;
                     <div id='pause' class='control click' onclick="setAudioAction(this,'pause');"></div>
                     <div id='unmute' class='control click' onclick="setAudioAction(this,'mute');"></div>
                     <input id='volume' class='click' type='range' min='0' max='1' step='0.01' value='{$volume}'
-                    oninput="audiocontrol(this,'volume');"  onchange="setAudioAction(this,'volume');"/>
+                    oninput="setAudioAction(this,'volume');"  onchange="setAudioAction(this,'volume');"/>
 EOL;
         echo "
 
@@ -776,7 +776,6 @@ EOL;
                 }
             }
 
-            //function audiocontrol(el, action) {
             function setAudioAction(el, action) {
                 var audioplayer = document.getElementById('audioplayer');
                 if(audioplayer) {
