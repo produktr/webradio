@@ -29,11 +29,19 @@ echo    <<<HERE
                 body{
                     background-color: black;
                 }
+                #ineedtohold{
+                    height: 99vh;
+                    position: relative;
+                }
                 #container{
+                    margin: 0;
+                    position: absolute;
+                    top: 25%;
+                    left: 50%;
+                    -ms-transform: translate(-50%, -25%);
+                    transform: translate(-50%, -25%);
                     width: 500px;
                     max-height: 90vh;
-                    margin-top: 5vh;
-                    margin: auto;
                     background-color: #EAEAF7;
                     padding: 24px;
                     padding-top: 0px;
@@ -530,6 +538,7 @@ HERE;
 $date = date('l d M Y');
 echo <<<HERE
     <body>
+    <div id='ineedtohold'>
         <div id='container'>
             <pre class='date'>Page loaded on: {$date}</pre>
             <pre class='channels click' onclick='setChannelVisibility(this)' data-status='visible'><b>Stations:</b> [⇡]</pre>
@@ -832,6 +841,7 @@ echo <<<HERE
                 </div>
                 <canvas id='osc'></canvas>
                 <pre onclick="javascript:location.href = 'http://github.com/produktr/webradio'" class='footer click' >github.com/produktr/webradio</pre></a>
+            </div>
             </div>
             <script>
                 function setBackgroundAnimation()
