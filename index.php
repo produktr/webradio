@@ -393,12 +393,12 @@ $stations = [
         'Dutch' => '--------------------------------------------------',
         '3FM Alternative' =>
             [ 'http://icecast.omroep.nl/3fm-alternative-mp3', '', 'rtp'],
-        'Radio 8FM [Noordoost Brabant]' => [
-            'https://8fm.live-streams.nl/mp3-eindhoven',
+        'CLASSICS ONLY' => [
+            'https://8fm.live-streams.nl/aac-eindhoven',
             '',
             'rtp',
             [
-                'url' => 'https://www.radio8fm.nl/caliope/nowplaying.php',
+                'url' => 'https://classicsonly.nl/caliope/nowplaying.php',
                 'type' => 'json',
                 'title' => 'titel',
                 'artist' => 'artiest'
