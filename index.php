@@ -603,14 +603,20 @@ echo <<<HERE
     </script>
 HERE;
 
+$checkedAttribute = 'checked';
+if (!isset($_COOKIE['stopBackgroundAnimation']) || $_COOKIE['stopBackgroundAnimation'] == 'false') {
+    $checkedAttribute = '';
+    setcookie('stopBackgroundAnimation', false);
+}
 $date = date('l d M Y');
 echo <<<HERE
     <body>
     <div id='ineedtohold'>
         <div id='container'>
             <pre class='date'>Page loaded on: {$date}</pre>
+            <pre>{$selected}</pre>
             <label class="switch">
-                <input type="checkbox" onclick="setBackgroundAnimationCookie(this)">
+                <input type="checkbox" onclick="setBackgroundAnimationCookie(this)" {$checkedAttribute}>
                 <span class="slider"></span>
             </label>
             <pre class='channels click' onclick='setChannelVisibility(this)' data-status='visible'><b>Stations:</b> [⇡]</pre>
@@ -989,7 +995,6 @@ echo <<<HERE
                         setCanvasAsBackground(canvas);
                         colors = shiftColors(colors);
                         if (isBackgroundAnimationDisabled() == 'true') {
-                            console.log(isBackgroundAnimationDisabled());
                             return 0;
                         }
                         setTimeout(function(){drawImageToCanvasX(canvas, canvasX, colors)}, 1250);
