@@ -267,6 +267,62 @@ echo    <<<HERE
                     margin-bottom: 0px;
                     font-size: 50%;
                 }
+                .switch {
+                    position: relative;
+                    display: inline-block;
+                    width: 30px;
+                    height: 17px;
+                }
+                .switch input {
+                    opacity: 0;
+                    width: 0;
+                    height: 0;
+                }
+                .slider {
+                    position: absolute;
+                    cursor: pointer;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    border-radius: 17px;
+                    bottom: 0;
+                    background-color: #ccc;
+                    -webkit-transition: .4s;
+                    transition: .4s;
+                }
+                .slider:before {
+                    position: absolute;
+                    content: "";
+                    height: 13px;
+                    width: 13px;
+                    left: 2px;
+                    border-radius: 50%;
+                    bottom: 2px;
+                    background-color: white;
+                    -webkit-transition: .4s;
+                    transition: .4s;
+                }
+                input:checked + .slider {
+                    background-color: #2196F3;
+                }
+                input:focus + .slider {
+                    box-shadow: 0 0 1px #2196F3;
+                }
+                input:checked + .slider:before {
+                    -webkit-transform: translateX(13px);
+                    -ms-transform: translateX(13px);
+                    transform: translateX(13px);
+                }
+                .slider::after {
+                    content:"Disable background animation";
+                    position: absolute;
+                    top: 12%;
+                    left: 120%;
+                    width: 1000%;
+                    font-size: 75%;
+                    color: gray;
+                    font-family: Consolas,monospace;
+                }
             </style>
             <script src="https://cdn.jsdelivr.net/hls.js/latest/hls.min.js"></script>
         </head>
@@ -541,6 +597,10 @@ echo <<<HERE
     <div id='ineedtohold'>
         <div id='container'>
             <pre class='date'>Page loaded on: {$date}</pre>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
             <pre class='channels click' onclick='setChannelVisibility(this)' data-status='visible'><b>Stations:</b> [⇡]</pre>
             <form id='channels' method='post' onsubmit="setScrollPosition('save')" >
 HERE;
