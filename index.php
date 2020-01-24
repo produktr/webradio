@@ -3,12 +3,12 @@ ob_start();
 header('Content-Type: text/html; charset=utf-8');
 define('C_CORS', true);
 define('C_CORS_NOWPLAYING_URL', 'https://cors.io/?');
-if(isset($_POST['station'])) {
+if (isset($_POST['station'])) {
     $x = explode("%SPLIT%", $_POST['station']);
     $s_group = $x[0];
     $s_station = $x[1];
 }
-if(!isset($_COOKIE['scroll'])){
+if (!isset($_COOKIE['scroll'])) {
     $_COOKIE['scroll'] = 0;
 }
 echo    <<<HERE
@@ -547,10 +547,11 @@ $stations = [
 
 echo <<<HERE
     <script>
-        function setChannelVisibility(el){
+        function setChannelVisibility(el)
+        {
             var channels = document.getElementById('channels');
             var status = el.getAttribute('data-status');
-            if(status === 'visible') {
+            if (status === 'visible') {
                 channels.className = 'hidden';
                 el.setAttribute('data-status', 'hidden');
                 el.innerHTML = '<b>Stations:</b> [⇣]';
@@ -563,11 +564,12 @@ echo <<<HERE
     </script>
 
     <script>
-        function setGroupVisibility(el){
+        function setGroupVisibility(el)
+            {
             var status = el.getAttribute('data-status');
             var name = el.innerHTML;
             var group = el.nextSibling;
-            if(status === 'visible') {
+            if (status === 'visible') {
                 group.className = 'group hidden';
                 el.setAttribute('data-status', 'hidden');
                 document.cookie = name+'=hidden';
@@ -580,11 +582,12 @@ echo <<<HERE
     </script>
 
     <script>
-        function setScrollPosition(action){
+        function setScrollPosition(action)
+        {
             var ch = document.getElementById('channels');
-            if(action === 'save'){
+            if (action === 'save') {
                 document.cookie = 'scroll='+ch.scrollTop;
-            }else{
+            } else {
                 ch.scrollTop = {$_COOKIE['scroll']};
             }
         }
@@ -622,20 +625,20 @@ echo <<<HERE
             <pre class='channels click' onclick='setChannelVisibility(this)' data-status='visible'><b>Stations:</b> [⇡]</pre>
             <form id='channels' method='post' onsubmit="setScrollPosition('save')" >
 HERE;
-foreach($stations as $group => $station) {
-    if(!isset($_COOKIE[$group])) {
+foreach ($stations as $group => $station) {
+    if (!isset($_COOKIE[$group])) {
         setcookie($group, 'hidden');
         $_COOKIE[$group] = 'hidden';
     }
     echo "<span class='group click' onclick='setGroupVisibility(this)' data-status='{$_COOKIE[$group]}'>{$group}</span>";
     echo "<div class='group {$_COOKIE[$group]}'>";
-    foreach($station as $name => $data) {
+    foreach ($station as $name => $data) {
         $class = '';
-        if(!is_array($data)){
+        if (!is_array($data)) {
             echo "<span class='subgroup'>- {$name} -</span>";
             continue;
         }
-        if(isset($s_station) && $s_station === $name && $s_group === $group) {
+        if (isset($s_station) && $s_station === $name && $s_group === $group) {
             $class .= ' active';
         }
         echo "<button class='click station {$class}' name='station' value='{$group}%SPLIT%{$name}'>{$name}</button>";
@@ -648,8 +651,8 @@ echo "<form method='post' onsubmit=\"setScrollPosition('save')\" ><button class=
 $buffer = ob_get_contents();
 ob_end_clean();
 $controls = '';
-if(isset($s_group) && isset($s_station)) {
-    if($s_station === 'stop') {
+if (isset($s_group) && isset($s_station)) {
+    if ($s_station === 'stop') {
         $buffer = preg_replace('/%TITLE%/i', 'Radio - stopped', $buffer);
         echo $buffer;
         echo "<pre>Please select radio a station</pre>";
@@ -658,29 +661,30 @@ if(isset($s_group) && isset($s_station)) {
         echo $buffer;
         echo "<pre id='stationinfo'>Loading... {$s_station}</pre>";
         $location = $stations[$s_group][$s_station][0];
-        if(C_CORS){
+        if (C_CORS) {
             $location = '/c_cors/'.preg_replace('/http[s]?:\/\//', '', $location);
         }
         $volume = $stations[$s_group][$s_station][1];
         $type = $stations[$s_group][$s_station][2];
-        if(!isset($volume) || $volume === '') {
+        if (!isset($volume) || $volume === '') {
             $volume = 1;
         }
-        if(isset($_COOKIE['volume'])) {
+        if (isset($_COOKIE['volume'])) {
             $set_volume = $_COOKIE['volume'];
             $volume = ($set_volume / 1) * $volume;
         }
 echo "<pre id='nowplaying'></pre>";
-        if($stations[$s_group][$s_station][3]){
+        if ($stations[$s_group][$s_station][3]) {
             $urlextension = C_CORS_NOWPLAYING_URL;
             $nowplaying = <<<EOL
                 <script>
-                    function getNowPlaying(){
+                    function getNowPlaying()
+                    {
                         var xhttp = new XMLHttpRequest();
-                        xhttp.onreadystatechange = function(){
-                            if(this.readyState == 4 && this.status == 200){
+                        xhttp.onreadystatechange = function() {
+                            if (this.readyState == 4 && this.status == 200) {
                                 type = "{$stations[$s_group][$s_station][3]['type']}";
-                                switch(type){
+                                switch (type) {
                                     case 'json':
                                         var jsonresponse = JSON.parse(this.responseText);
                                         document.getElementById("nowplaying").innerHTML =
@@ -719,7 +723,8 @@ EOL;
         <script>
             window.addEventListener('DOMContentLoaded', function() {setPlayer();}, false);
 
-            function setPlayer(){
+            function setPlayer()
+            {
                 if (document.contains(document.getElementById('audioplayer'))) {
                     document.getElementById('audioplayer').remove();
                 }
@@ -727,9 +732,9 @@ EOL;
                 var audio = document.createElement('audio');
                 var location = '{$location}';
                 audio.crossOrigin = 'anonymous';
-                switch(type){
+                switch (type) {
                     case 'hls':
-                        if(Hls.isSupported()) {
+                        if (Hls.isSupported()) {
                             var hls = new Hls();
                             hls.loadSource(location);
                             hls.attachMedia(audio);
@@ -771,7 +776,8 @@ EOL;
                         '#BF980A','#F1C40F','#0E6E59','#16A085','#246E9F',
                         '#3498DB','#0000BB','#0000ED','#6E4084','#9B59B6',];
                         useColor = colors[Math.floor(Math.random() * 13)];
-                        function drawOsc() {
+                        function drawOsc() 
+                        {
                             drawVisual = requestAnimationFrame(drawOsc);
                             analyser.getByteTimeDomainData(dataArray);
                             canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
@@ -782,10 +788,10 @@ EOL;
                             canvasCtx.beginPath();
                             var sliceWidth = canvas.width * 1.0 / bufferLength;
                             var x = 0;
-                            for(var i = 0; i < bufferLength; i++) {
+                            for (var i = 0; i < bufferLength; i++) {
                                 var v = dataArray[i] / 128.0;
                                 var y = v * canvas.height/2;
-                                if(i === 0) {
+                                if (i === 0) {
                                     canvasCtx.moveTo(x, y);
                                 } else {
                                     canvasCtx.lineTo(x, y);
@@ -796,9 +802,10 @@ EOL;
                             canvasCtx.stroke();
                         };
                         drawOsc();
-                    }).catch(function(error) {
-                    audio.src = '';
-                    audio.load();
+                    }).catch(function(error)
+                    {
+                        audio.src = '';
+                        audio.load();
                         audio.removeAttribute('crossOrigin');
                         audio.src = location;
                         audio.play();
@@ -811,7 +818,8 @@ EOL;
                 getNowPlaying();
 
                 // set time based function
-                (function(){
+                (function()
+                {
                     var y = setInterval(function(){ setAudioState(y); }, 1000);
                     var x = setInterval(function(){ getNowPlaying(); }, 5000);
                 })();
@@ -821,24 +829,25 @@ EOL;
             var laststate = '';
             var retries = 0;
 
-            function setAudioState(intervalid){
+            function setAudioState(intervalid)
+            {
                 var audioelem = document.getElementById('audioplayer');
                 var stationinfo = document.getElementById('stationinfo');
                 var state = audioelem.readyState;
 
-                if(state === 0 || state === 1){
-                    if(laststate === state){
+                if (state === 0 || state === 1) {
+                    if (laststate === state) {
                         laststate = state;
                         called++;
-                    }else{
+                    } else {
                         laststate = state;
                         called = 1;
                     }
-                    if(called > 10){
+                    if (called > 10) {
                         laststate = state;
                         called = 0;
                         retries++;
-                        if(retries > 0){
+                        if (retries > 0) {
                             stationinfo.innerHTML = 'Error: {$s_station} offline';
                             clearInterval(intervalid);
                             return false;
@@ -846,7 +855,7 @@ EOL;
                         setPlayer();
                     }
                 }
-                switch(state){
+                switch (state) {
                     case 0:
                         stationinfo.innerHTML = 'Loading... {$s_station}';
                         break;
@@ -863,12 +872,13 @@ EOL;
                 }
             }
 
-            function setAudioAction(el, action) {
+            function setAudioAction(el, action) 
+            {
                 var audioplayer = document.getElementById('audioplayer');
-                if(audioplayer) {
-                    switch(action) {
+                if (audioplayer) {
+                    switch (action) {
                         case 'pause':
-                            if(audioplayer.paused) {
+                            if (audioplayer.paused) {
                                 audioplayer.play();
                                 el.id = 'pause';
                                 break;
@@ -877,7 +887,7 @@ EOL;
                             el.id = 'play';
                             break;
                         case 'mute':
-                            if(audioplayer.muted) {
+                            if (audioplayer.muted) {
                                 audioplayer.muted = false;
                                 document.getElementById('volume').value = audioplayer.volume;
                                 el.id = 'unmute';
@@ -891,15 +901,15 @@ EOL;
                             var volume = el.value;
                             audioplayer.volume = volume;
                             document.cookie = 'volume='+volume;
-                            if(volume > 0) {
+                            if (volume > 0) {
                                 mute = document.getElementById('mute');
-                                if(mute) {
+                                if (mute) {
                                     mute.id = 'unmute';
                                 }
                                 break;
                             }
                             unmute = document.getElementById('unmute');
-                            if(unmute) {
+                            if (unmute) {
                                 unmute.id = 'mute';
                             }
                             break;
@@ -966,8 +976,8 @@ echo <<<HERE
                     {
                         var cvx = canvasX;
                         var x = y = 64;
-                        for(i = 0; i < 14; i++){
-                            if(i % 2){
+                        for (i = 0; i < 14; i++) {
+                            if (i % 2) {
                                 cvx.beginPath();
                                 cvx.lineWidth = 3;
                                 cvx.strokeStyle = colors[i];
@@ -984,7 +994,7 @@ echo <<<HERE
                                 cvx.lineTo(x+3+220+5,y+1+220+5.5);
                                 cvx.stroke();
                                 x = y -= 8;
-                            }else{
+                            } else {
                                 cvx.beginPath();
                                 cvx.rect(x,y,224,224);
                                 cvx.lineWidth = 8;
