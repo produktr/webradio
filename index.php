@@ -343,8 +343,8 @@ $stations = [
                 ]
             ],
         '80s' => '--------------------------------------------------',
-        '80s #1' =>
-            [ 'http://50.7.76.254:9908/;stream/1', '0.8', 'rtp'],
+        //'80s #1' =>
+        //    [ 'http://50.7.76.254:9908/;stream/1', '0.8', 'rtp'],
         '181-80s' =>
             [ 'http://listen.181fm.com/181-lite80s_128k.mp3', '', 'rtp'],
         '181.fm - Awesome 80s' =>
@@ -355,44 +355,44 @@ $stations = [
         '90s' => '--------------------------------------------------',
         '90s #1 fm' =>
             [ 'http://19353.live.streamtheworld.com/977_90_SC', '', 'rtp'],
-        '90s Radio 10' =>
-            [ 'http://vip-icecast.538.lw.triple-it.nl/WEB22_MP3', '', 'rtp'],
+        //'90s Radio 10' =>
+        //    [ 'http://vip-icecast.538.lw.triple-it.nl/WEB22_MP3', '', 'rtp'],
 
         '00s' => '----------------------------------------------------',
         '2000 FM' => [ 'http://bigrradio-edge1.cdnstream.com/5106_128', '', 'rtp'],
     ],
 
-    'Rock' => [
-        'Classic' => '------------------------------------------------',
-            'Arrow' => [
-                'http://91.221.151.155/;?allradio.nl&1501067066',
-                '',
-                'rtp',
-                [
-                    'url' => 'https://player.arrow.nl/index.php?c=Arrow%20Classic%20Rock',
-                    'type' => 'json',
-                    'title' => 'title',
-                    'artist' => 'artist'
-                ]
-            ],
-            'Classic Rock Florida' =>
-                [ 'http://us2.internet-radio.com/proxy/classicrock160?mp=/;', '', 'rtp'],
-            'Classic Rock Planet' =>
-                [ 'http://uk6.internet-radio.com:8022/;stream', '', 'rtp'],
-            'Classic Rock New York' =>
-                [ 'http://us2.internet-radio.com:8351/;stream', '', 'rtp'],
-            'Classic Rock Miami' =>
-                [ 'http://us2.internet-radio.com/proxy/classicrockmiamiplus?mp=/;', '', 'rtp'],
-            'Disco Classic Radio' =>
-                [ 'http://discoclassicradio.shoutcaststream.com:8312/stream;?allradio.nl&1501067121', '', 'rtp'],
-    ],
+    //'Rock' => [
+        //'Classic' => '------------------------------------------------',
+            //'Arrow' => [
+            //    'http://91.221.151.155/;?allradio.nl&1501067066',
+            //    '',
+            //    'rtp',
+            //    [
+            //        'url' => 'https://player.arrow.nl/index.php?c=Arrow%20Classic%20Rock',
+            //        'type' => 'json',
+            //        'title' => 'title',
+            //        'artist' => 'artist'
+            //    ]
+            //],
+            //'Classic Rock Florida' =>
+            //    [ 'http://us2.internet-radio.com/proxy/classicrock160?mp=/;', '', 'rtp'],
+            //'Classic Rock Planet' =>
+            //    [ 'http://uk6.internet-radio.com:8022/;stream', '', 'rtp'],
+            //'Classic Rock New York' =>
+            //    [ 'http://us2.internet-radio.com:8351/;stream', '', 'rtp'],
+            //'Classic Rock Miami' =>
+            //    [ 'http://us2.internet-radio.com/proxy/classicrockmiamiplus?mp=/;', '', 'rtp'],
+            //'Disco Classic Radio' =>
+            //    [ 'http://discoclassicradio.shoutcaststream.com:8312/stream;?allradio.nl&1501067121', '', 'rtp'],
+    //],
 
     'Electronic' => [
         'House' => '--------------------------------------------------',
         'Deephouse' =>
             ['http://198.15.94.34:8006/stream', '', 'rtp'],
-        'Dogglounge Deep House Radio' =>
-            [ 'http://master.dogglounge.com:9128/;', '0.5', 'rtp'],
+        //'Dogglounge Deep House Radio' =>
+        //    [ 'http://master.dogglounge.com:9128/;', '0.5', 'rtp'],
         'Beatblender' =>
             ['http://ice1.somafm.com/beatblender-128-aac', '', 'rtp'],
         'The Trip' => [
@@ -421,28 +421,28 @@ $stations = [
         'Drum n Bass' => '--------------------------------------------',
         'Beats n Breaks' =>
             [ 'http://stream.nauticradio.net:14280/;', '', 'rtp'],
-        'DnB Liquified' =>
-            [ 'http://st8.webradioworld.net:8000/;', '', 'rtp'],
+        //'DnB Liquified' =>
+        //   [ 'http://st8.webradioworld.net:8000/;', '', 'rtp'],
         'DnB Jungle' =>
             [ 'http://trace.dnbradio.com/dnbradio_main.mp3', '0.9', 'rtp'],
 
-        'Tekno' => '--------------------------------------------------',
-        'Tekno #1' =>
-            [ 'http://channel1.teknoradio.nl:8064/;', '', 'rtp'],
-        'Tekno #2' =>
-            [ 'http://channel2.teknoradio.nl:8126/;', '', 'rtp'],
-        'Tekno #3' =>
-            [ 'http://channel3.teknoradio.nl:8124/;', '', 'rtp'],
+        //'Tekno' => '--------------------------------------------------',
+        //'Tekno #1' =>
+        //    [ 'http://channel1.teknoradio.nl:8064/;', '', 'rtp'],
+        //'Tekno #2' =>
+        //    [ 'http://channel2.teknoradio.nl:8126/;', '', 'rtp'],
+        //'Tekno #3' =>
+        //    [ 'http://channel3.teknoradio.nl:8124/;', '', 'rtp'],
 
         'French / Hardcore' => '---------------------------------------',
         'HardcoreNL' =>
             [ 'http://81.18.165.235/;', '0.8', ''],
         'HardcorePower' =>
             [ 'http://src.shoutcaststream.com:8022/;', '', 'rtp'],
-        'NERadio Hardstyle' =>
-            [ 'http://1.hardstyle.nu:443/;', '', 'rtp'],
-        'Gabber FM' =>
-            [ 'http://streaming.radionomy.com/Gabberfm?lang=en-GB%2cen-US%3bq%3d0.8%2cen%3bq%3d0.6', '0.6', 'rtp'],
+        //'NERadio Hardstyle' =>
+        //    [ 'http://1.hardstyle.nu:443/;', '', 'rtp'],
+        //'Gabber FM' =>
+        //    [ 'http://streaming.radionomy.com/Gabberfm?lang=en-GB%2cen-US%3bq%3d0.8%2cen%3bq%3d0.6', '0.6', 'rtp'],
     ],
 
     'Regular' => [
@@ -477,26 +477,26 @@ $stations = [
             [ 'http://live.nsbradio.co.uk:7904/;', '', 'rtp'],
         'FM4 - ORF' =>
             [ 'http://mp3stream1.apasf.apa.at:8000/;', '', 'rtp'],
-        'WDR4' =>
-            [ 'http://wdr-wdr4-live.cast.addradio.de/wdr/wdr4/live/mp3/128/stream.mp3', '', 'rtp'],
-        'Radio Waf' =>
-            [ 'http://mp3.radiowaf.c.nmdn.net/radiowaf/livestream.mp3', '', 'rtp'],
+        //'WDR4' =>
+        //    [ 'http://wdr-wdr4-live.cast.addradio.de/wdr/wdr4/live/mp3/128/stream.mp3', '', 'rtp'],
+        //'Radio Waf' =>
+        //    [ 'http://mp3.radiowaf.c.nmdn.net/radiowaf/livestream.mp3', '', 'rtp'],
     ],
     'Other' => [
         'Generation Soul Disco Funk' =>
             [ 'http://event.generationdiscofunk.com:8000/;', '0.7', ''],
-        'Disco Paradise' =>
-            ['http://144.217.129.213:9122/;*.mp3', '', ''],
-        'B4B' =>
-            ['http://b4bdiscofunk.ice.infomaniak.ch/b4bdiscofunk-128.mp3', '0.7', ''],
+        //'Disco Paradise' =>
+        //    ['http://144.217.129.213:9122/;*.mp3', '', ''],
+        //'B4B' =>
+        //    ['http://b4bdiscofunk.ice.infomaniak.ch/b4bdiscofunk-128.mp3', '0.7', ''],
         'STOMP' =>
             ['http://149.255.59.162:8064/live', '0.9', ''],
-        'Vaporwave #1' =>
-            [ 'https://plaza.one/mp3', '', 'rtp'],
+        //'Vaporwave #1' =>
+        //    [ 'https://plaza.one/mp3', '', 'rtp'],
         'Poolside' =>
             [ 'http://stream.radio.co/s98f81d47e/listen', '0.7', 'rtp'],
-        'Lounge' =>
-            [ 'http://listen.radionomy.com/;', '','rtp'],
+        //'Lounge' =>
+        //    [ 'http://listen.radionomy.com/;', '','rtp'],
         'Lagrosse Reggae' =>
             ['http://ice2.lagrosseradio.info/lagrosseradio-reggae-192.mp3', '', 'rtp'],
         'Seeburg 1000' =>
