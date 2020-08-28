@@ -23,6 +23,7 @@ https://github.com/dailymotion/hls.js is used to play stations using HLS. Add 'h
 ### Oscilloscope visuals
 Uses web audio api and canvas to create oscilliscope.  
 
+### CORS
 Not all sources have the header Access-Control-Allow-Origin set.  
 To circumvent CORS restrictions you could set up a reverse proxy:  
 

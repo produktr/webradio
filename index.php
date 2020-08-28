@@ -351,6 +351,8 @@ $stations = [
             [ 'http://uplink.duplexfx.com:8000/;', '', ''],
         '1000 HITS 80s' =>
             [ 'http://91.121.155.204:8048/;stream/1', '', 'rtp'],
+        'KLUV radio' => 
+            ['https://playerservices.streamtheworld.com/api/livestream-redirect/KLUVFM.mp3', '', 'rtp'],
 
         '90s' => '--------------------------------------------------',
         '90s #1 fm' =>
@@ -439,6 +441,12 @@ $stations = [
             [ 'http://81.18.165.235/;', '0.8', ''],
         'HardcorePower' =>
             [ 'http://src.shoutcaststream.com:8022/;', '', 'rtp'],
+        'Frenchcore' =>
+            ['http://frenchcore24fm.nl/radiostation/index.php/stream', '', 'rtp'],
+            // first generate link with above
+            
+            //['http://frenchcore24fm.nl/radiostation/webstream/1596122256.php', '', 'rtp'],
+            // starts on the same point over and over
         //'NERadio Hardstyle' =>
         //    [ 'http://1.hardstyle.nu:443/;', '', 'rtp'],
         //'Gabber FM' =>
@@ -449,22 +457,8 @@ $stations = [
         'Dutch' => '--------------------------------------------------',
         '3FM Alternative' =>
             [ 'http://icecast.omroep.nl/3fm-alternative-mp3', '', 'rtp'],
-        'CLASSICS ONLY' => [
-            'https://8fm.live-streams.nl/aac-eindhoven',
-            '',
-            'rtp',
-            [
-                'url' => 'https://classicsonly.nl/caliope/nowplaying.php',
-                'type' => 'json',
-                'title' => 'titel',
-                'artist' => 'artiest'
-            ]
-        ],
         'Studio 040' => [
-            'https://stream.studio040.nl/studio040.aac',
-            '',
-            'rtp'
-        ],
+            'https://stream.studio040.nl/studio040.aac', '', 'rtp'],
         'Next Movement' =>
             [ 'http://stream.nauticradio.net:14230/;', '', 'rtp'],
         'Vodoo Gospel' =>
@@ -473,6 +467,10 @@ $stations = [
             [ 'http://stream.nauticradio.net:14220/;', '', 'rtp'],
 
         'International' => '------------------------------------------',
+        'ANTENNE BAYERN 80s' => [
+            'https://s8-webradio.webradio.de/80er-kulthits', '', 'rtp'],
+        'CLASSICS HITS' => [
+            'https://edge.audioxi.com/CLASSIC', '', 'rtp'],
         'NSBRadio.co.uk' =>
             [ 'http://live.nsbradio.co.uk:7904/;', '', 'rtp'],
         'FM4 - ORF' =>
