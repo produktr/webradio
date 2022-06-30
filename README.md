@@ -8,7 +8,6 @@ Drawbacks? All of them... (more to load)
 ### How does it look
 
 ![preview](preview.png)  
-[See it in action](http://pointwood.pw/webradio)
 
 ### Stations
 Add stations directly into index.php $stations object:  
